@@ -28,6 +28,10 @@ sass:
     style: compressed
 plugins:
     - jekyll-minifier
+assets:
+    external:
+        uglifier:
+            harmony: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
