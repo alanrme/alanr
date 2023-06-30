@@ -15,6 +15,11 @@ html {
 @media screen and (min-width: 1200px) { html { font-size: 18px; } }
 @media screen and (min-width: 1600px) { html { font-size: 21px; } }
 @media screen and (min-width: 2000px) { html { font-size: 24px; } }
+@media screen and (max-width: 600px) {
+	.section {
+		padding: 2.5em 2em 1em 2em !important;
+	}
+}
 
 body {
 	font-family: $font-stack;
@@ -101,23 +106,21 @@ a {
 
 
 .hero {
+	display: flex;
 	z-index: -1;
-	height: 100vh; /* fallback for browsers that don't support custom properties */
-	height: calc(var(--vh, 1vh) * 100);
+	min-height: 100vh; /* fallback for browsers that don't support custom properties */
+	min-height: calc(var(--vh, 1vh) * 100);
 	position: relative;
 	transition: 0.5s;
 	.section {
 		display: flex;
-		position: absolute;
-		top: 4em;
-		bottom: 1em;
-		left: 1em;
-		right: 1em;
+		//position: absolute;
+		margin: 4em 1em 1em 1em;
 		width: auto;
-		margin: 0;
 		flex-direction: column;
 		justify-content: flex-end;
     	align-items: flex-start;
+		flex-grow: 1;
 		/* h1 { display: inline-block } */
 		p, h1:not(#alan) {
 			transition: 0.5s;
@@ -186,7 +189,7 @@ a {
 .section {
 	padding: 3.5em 3em 2em 3em;
 	margin: auto;
-	margin: 4em 1em;
+	margin: 2em 1em;
 	border-radius: 1em;
 	border: 1.5px solid #ccc;
 	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
@@ -337,9 +340,19 @@ div.shake {
 
 
 
+.container {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+
+
+
 /* target nav bar */
 nav {
 	position: absolute;
+	top: 0;
 	z-index: 10;
 	width: 100%;
 	height: auto;
