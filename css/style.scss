@@ -118,7 +118,8 @@ a {
 		flex-direction: column;
 		justify-content: flex-end;
     	align-items: flex-start;
-		h3, p {
+		/* h1 { display: inline-block } */
+		p, h1:not(#alan) {
 			transition: 0.5s;
 			transition-delay: 0.4s;
 		}
@@ -139,7 +140,7 @@ a {
 			color: white;
 		}
 		.section {
-			h3, p {
+			p, h1:not(#alan) {
 				opacity: 0;
 				transition: 0s;
 			}
