@@ -1,0 +1,56 @@
+<!--
+    _     _   _   _ 
+    \ \  / / |_| | |   Alan D'souza
+     \ \/ /   _  | |   _____     _____
+      \  /   | | | |  / ___ \   / ___ \
+      /  \   | | | | | /   \ | | |   | |
+     / /\ \  | | | | | \___/ | | |___| |
+    /_/  \_\ |_| |_|  \_____/   \____  |
+                                 ____| |
+                                |______/
+    https://github.com/{{ site.github_username }}
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+
+
+<body>
+    {% include hero.html %}
+    
+    <div class="content"> 
+        {{ content }}
+    </div>
+
+    {% include footer.html %}
+    
+    <!-- MODALS BELOW -->
+    {% include easteregg.html %}
+
+    <div class="modal" id="blur"></div>
+    <div class="modal" id="blur2"></div>
+
+    <div class="modal" id="p-view"></div>
+    
+    <a aria-label="Scroll to top of page" href="#top"></a><div class="scrollup">
+        <i class="bi-caret-up-fill" style="font-size: 2em; color: white"></i>
+    </div></a>
+    
+    <div class="modal" id="menu-bg" style="display: none">
+        <div id="menu">
+            <span class="m-close"><i class="bi-x-lg"></i> Close</span>
+        </div>
+    </div>
+
+    <!-- if JS off -->
+    <noscript>
+        <div style="background-color: #fff; color: #000; z-index: 99999999999999999999999999999999999999999; position: absolute; left:0;top:0">
+            <h1>
+                You should probably enable JavaScript! My website relies on it.
+            </h1>
+        </div>
+    </noscript>
+</body>
+
+</html>

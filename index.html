@@ -1,0 +1,115 @@
+---
+layout: default
+title: {{ site.title }}
+---
+
+<!-- Page-specific dependencies -->
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script defer src="{{ site.baseurl }}/js/github.js" async></script>
+
+
+<div class="section" id="intro">
+	<div class="container" style="text-align: left; margin-bottom: 30px;">
+		<h2 class="aos" data-aos="fadein-expand-up">EXPERIENCE</h2>
+		
+		<p class="aos" data-aos="fadein-up"> What I do, and how well </p>
+		
+		<div class="row p-bars">
+			<div data-aos="fadein" class="aos col-md-3">
+				<p>JS</p>
+				<div class="progress">
+					<div aria-label="JS" class="progress-bar" role="progressbar" style="width:80%;"></div>
+				</div> 
+			</div>
+			
+			<div data-aos="fadein" class="aos col-md-3">
+				<p>PYTHON</p>
+				<div class="progress">
+					<div aria-label="Python" class="progress-bar" role="progressbar" style="width:45%;"></div>
+				</div> 
+			</div>
+			
+			<div data-aos="fadein" class="aos col-md-3">
+				<p>GOLANG</p>
+				<div class="progress">
+					<div aria-label="Golang" class="progress-bar" role="progressbar" style="width:30%;"></div>
+				</div> 
+			</div>
+
+			<div data-aos="fadein" class="aos col-md-3">
+				<p>WEB DESIGN</p>
+				<div class="progress">
+					<div aria-label="Web design" class="progress-bar" role="progressbar" style="width:80%;"></div>
+				</div> 
+			</div>
+
+			<div data-aos="fadein" class="aos col-md-3">
+				<p>TENSORFLOW</p>
+				<div class="progress">
+					<div aria-label="Web design" class="progress-bar" role="progressbar" style="width:30%;"></div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="section" id="portfolio">
+	<div class="container" style="text-align: left; margin-bottom: 30px;">
+		<h2 class="aos" data-aos="fadein-expand-up">PROJECTS</h2>
+		
+		<p class="aos" data-aos="fadein-up" style="margin-top: 20px"> Check out a few of my creations. Pulled from <a href="https://github.com/XilogOfficial">GitHub</a>.</p>
+		<div class="row card-columns gh-projects"></div>
+	</div>
+	<template>
+		<a href="" class="col-sm-6" style="color: inherit;">
+			<div class="card aos arrow" data-aos="fadein-up">
+				<h3></h3>
+				<p2></p2>
+				<div class="stars">
+					<i class="bi-star-fill"></i>
+				</div>
+			</div>
+		</a>
+	</template>
+</div>
+
+
+<div class="section" id="contact">
+	<div class="container">
+		<h2 class="aos" data-aos="fadein-expand-up">LINKS</h2>
+		
+		<div class="aos" data-aos="fadein-up" class="contact-slides">
+			<!-- icons -->
+			<div class="slides-container">
+				<div class="slides">
+					<div id="slide-1">
+						<i class="bi-envelope-fill" style="font-size: 5rem"></i>
+						<p><a href="mailto:alan@alanr.me">alan@alanr.me</a></p>
+					</div>
+					<div id="slide-2">
+						<i class="bi-github" style="font-size: 5rem"></i>
+						<p>{{ site.github_username }}</p>
+					</div>
+				</div>
+				
+				<a href="#slide-1" aria-label="Email"><i class="bi-envelope-fill"></i></a>
+				<a href="#slide-2" aria-label="GitHub"><i class="bi-github"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+	<div class="section" id="fun">
+		<h2>Fun Tools</h2>
+		
+		<div class="container" style="text-align: left; margin-bottom: 30px;">
+			<p2>
+				If you want to visit the fun tools that were previously displayed on the homepage, please click the button below.
+			</p2>
+			<br>
+			<a href="./funstuff.html"><input type="button" value="FUN!" class="button1"></a>
+		</div>
+	</div>
+-->
