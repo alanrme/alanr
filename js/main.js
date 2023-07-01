@@ -2,7 +2,9 @@
 hero = _(".hero")
 hero.classList.add("loader")
 
-window.onload = () => {
+//window.onload = () => {}
+
+ready(() => {
     text = _("#alan")
     textclone = _("#alan2")
     const rect = text.getBoundingClientRect();
@@ -16,9 +18,8 @@ window.onload = () => {
         _("#alan2").remove()
         text.style.transform = `translate(0,0)`
     }, 10)
-}
 
-ready(() => {
+
     window.scrollTo(0, 0); // scroll to top on page load
     
     // set vh property to the true viewport height to fix it on mobile browsers
@@ -131,66 +132,80 @@ ready(() => {
             rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
             rect.left <= (window.innerWidth || document.documentElement.clientWidth)
             )
+    }
+    
+    
+    // SCROLL POSITION
+    let scrollpos = 0;
+    document.addEventListener('scroll', () => {
+        scrollpos = window.scrollY;
+        
+        // parallax scroll
+        /*
+        $('.parallax').each(function(index, element) {
+            // Check if the element is in the viewport.
+            if (isInViewport(this)) {
+                var diff = scrollpos - this.offsetTop
+                var ratio = Math.round((diff / this.offsetHeight) * 350)
+                $(this).css('background-position','center ' + parseInt(-ratio) + 'px')
+                $(".hero").css('transform', `translateY(${parseInt(ratio*0.5)}px)`)
+            }
+        })
+        */
+    });
+    
+    
+    
+    let intro = _('.content').offsetTop; // top of content
+    let nav = _('nav');
+    let checkpointContainer = _('.checkpoint-container')
+    let circles = checkpointContainer.querySelectorAll(".circle")
+    let sections = _(".section", true)
+    // run every 150ms, put most scroll events here
+    // more efficient than the scroll event
+    window.setInterval(function(){
+        intro = _('.content').offsetTop; // set top of content
+        // ^ this is in a loop so that when the screen is turned it
+        // will update with new values
+        
+        // if user scrolls below intro, show button
+        if (scrollpos > intro) {
+            scrollup.classList.add("show")
+        } else {
+            scrollup.classList.remove("show")
         }
         
         
-        // SCROLL POSITION
-        let scrollpos = 0;
-        document.addEventListener('scroll', () => {
-            scrollpos = window.scrollY;
-            
-            // parallax scroll
-            /*
-            $('.parallax').each(function(index, element) {
-                // Check if the element is in the viewport.
-                if (isInViewport(this)) {
-                    var diff = scrollpos - this.offsetTop
-                    var ratio = Math.round((diff / this.offsetHeight) * 350)
-                    $(this).css('background-position','center ' + parseInt(-ratio) + 'px')
-                    $(".hero").css('transform', `translateY(${parseInt(ratio*0.5)}px)`)
-                }
-            })
-            */
-        });
-        
-        
-        
-        let intro = _('.content').offsetTop; // top of content
-        let nav = _('nav');
-        // run every 150ms, put most scroll events here
-        // more efficient than the scroll event
-        window.setInterval(function(){
-            intro = _('.content').offsetTop; // set top of content
-            // ^ this is in a loop so that when the screen is turned it
-            // will update with the new position
-            
-            // if user scrolls below intro, show button
-            if (scrollpos > intro) {
-                scrollup.classList.add("show")
-            } else {
-                scrollup.classList.remove("show")
+        // FIXED NAV
+        // handles attaching nav to screen when scrolled far enough
+        if (scrollpos > 200) { // after the nav is no longer visible
+            if (!nav.classList.contains('scrolled')) nav.classList.add('scrolled');
+        } 
+        if (scrollpos < 200) {
+            if (nav.classList.contains('scrolled')) nav.classList.remove("scrolled");
+        }
+
+        updateCheckpoints(checkpointContainer)
+    }, 150);
+
+    function updateCheckpoints(container) {
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+        let newWidth = 0;
+        const increment = 100/(circles.length-1)
+        sections.forEach((section, i) => {
+            const rect = section.getBoundingClientRect()
+            if (rect.top < vh) {
+                // rect.bottom-rect.top used instead of rect.height as
+                // rect.height is not supported in older browsers
+                // Math.min used to cap newWidth at 100%
+                newWidth = Math.min(increment*(i + (vh-rect.top)/(rect.bottom-rect.top)), 100)
             }
-            
-            
-            // FIXED NAV
-            // handles attaching nav to screen when scrolled far enough
-            if (scrollpos > 200) { // after the nav is no longer visible
-                if (!nav.classList.contains('scrolled')) nav.classList.add('scrolled');
-                
-                // nest these since realistically they only run if the
-                // scroll is above 100, more efficient code
-                if (scrollpos > intro) {
-                    if (!nav.classList.contains('awake')) nav.classList.add('awake');
-                }
-                if (scrollpos < intro) {
-                    if (nav.classList.contains('awake')) {
-                        nav.classList.remove('awake');
-                        nav.classList.add('sleep');
-                    }
-                }
-            } 
-            if (scrollpos < 200) {
-                if (nav.classList.contains('scrolled')) nav.classList.remove("scrolled", "sleep");
-            }
-        }, 150);
-    });
+        })
+        container.querySelector("#checkpoint-fill").style.width = `${newWidth}%`
+        const circlesToFill = Math.floor((newWidth+1)/(100/(circles.length-1)))
+        circles.forEach((circle, i) => {
+            if (i<=circlesToFill) circle.classList.add("active")
+            else circle.classList.remove("active")
+        })
+    }
+});

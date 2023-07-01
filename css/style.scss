@@ -351,17 +351,22 @@ div.shake {
 
 /* target nav bar */
 nav {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	z-index: 10;
 	width: 100%;
-	height: auto;
+	height: 3em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
 	background: black;
+	transition: 1s;
 	
 	
 	/* target tab */
-	a {
+	a.tab {
 		display: inline-block;
 		min-height: 2em;
 		color: white;
@@ -428,16 +433,66 @@ nav {
 		-webkit-transition: 0.5s;
 		transition: 0.5s;
 	}
+
+	.checkpoint-container {
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+		margin: 0 1em;
+		max-width: 100%;
+		width: 350px;
+		&::after {
+			content: ""; /* Mandatory with ::before */
+			background-color: white;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			height: 0.6em;
+			width: 100%;
+			border-radius: 1em;
+		}
+	
+		.checkpoint-fill {
+			background-color: black;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 0.6em;
+			width: 10%;
+			transition: 0.4s ease;
+			border: solid 0.15em white;
+			border-radius: 1em;
+			z-index: 1;
+		}
+		a {
+			z-index: 2;
+			color: black;
+			.circle {
+				background-color: #fff;
+				border-radius: 999px;
+				height: 2em;
+				width: 2em;
+				font-size: 1.15em;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: 0.4s $bezier;
+				&.active {
+					background-color: black;
+					border: solid 0.15em white;
+					color: white;
+				}
+			}
+		}
+	}
 }
 /* the fixed nav bar for when the user scrolls */
 nav.scrolled {
 	position: fixed;
 	background: rgba(0, 0, 0, 0.3);
 	backdrop-filter: blur(3px);
-	transform: translateY(-100%);
 }
-nav.sleep {	transition: 0.5s $bezier; }
-nav.awake { transform: translateY(0); transition: 0.5s $bezier; }
 
 
 
