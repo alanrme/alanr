@@ -5,14 +5,16 @@ hero.classList.add("loader")
 //window.onload = () => {}
 
 ready(() => {
-    text = _("#alan")
-    textclone = _("#alan2")
-    const rect = text.getBoundingClientRect();
-    const rectclone = textclone.getBoundingClientRect();
-    console.log(rect)
-    text.style.opacity = 1
-    text.style.transform = `translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`
-    console.log(`translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`)
+    setTimeout(() => {
+        text = _("#alan")
+        textclone = _("#alan2")
+        const rect = text.getBoundingClientRect();
+        const rectclone = textclone.getBoundingClientRect();
+        console.log(rect)
+        text.style.opacity = 1
+        text.style.transform = `translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`
+        console.log(`translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`)
+    }, 10)
     setTimeout(() => {
         hero.classList.remove("loader")
         _("#alan2").remove()
