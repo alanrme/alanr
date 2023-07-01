@@ -17,7 +17,7 @@ ready(() => {
         hero.classList.remove("loader")
         _("#alan2").remove()
         text.style.transform = `translate(0,0)`
-    }, 10)
+    }, 100)
 
 
     window.scrollTo(0, 0); // scroll to top on page load
