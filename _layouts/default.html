@@ -27,6 +27,7 @@
     
     <!-- MODALS BELOW -->
     {% include easteregg.html %}
+    <div class="modal" id="loader"></div>
 
     <div class="modal" id="blur"></div>
     <div class="modal" id="blur2"></div>
@@ -45,10 +46,10 @@
 
     <!-- if JS off -->
     <noscript>
-        <div style="background-color: #fff; color: #000; z-index: 99999999999999999999999999999999999999999; position: absolute; left:0;top:0">
-            <h1>
+        <div style="background-color: #fff; color: #000; z-index: 99999999999999999999999999999999999999999; position: fixed; left:0;top:0; opacity: 0.5;">
+            <p>
                 You should probably enable JavaScript! My website relies on it.
-            </h1>
+            </p>
         </div>
     </noscript>
 </body>

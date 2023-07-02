@@ -10,16 +10,21 @@ ready(() => {
         textclone = _("#alan2")
         const rect = text.getBoundingClientRect();
         const rectclone = textclone.getBoundingClientRect();
-        console.log(rect)
         text.style.opacity = 1
+        _("#loader").style.display = "block"
         text.style.transform = `translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`
         console.log(`translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`)
-    }, 10)
+    }, 20)
     setTimeout(() => {
+        loadBg = _("#loader")
         hero.classList.remove("loader")
+        loadBg.classList.add("hide")
         _("#alan2").remove()
         text.style.transform = `translate(0,0)`
-    }, 100)
+        loadBg.addEventListener("transitionend", () => {
+            loadBg.style.display = 'none'
+        })
+    }, 200)
 
 
     window.scrollTo(0, 0); // scroll to top on page load

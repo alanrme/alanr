@@ -133,7 +133,6 @@ a {
 	}
 	&.loader {
 		z-index: 999;
-		background-color: rgba(0, 0, 0, 0.35);
 		transition: 0s;
 		#alan2 {
 			position: fixed;
@@ -693,7 +692,7 @@ input:checked + .slider:before {
 	display: none;
 	position: fixed;
 	font-size: 0.75rem;
-	z-index: 9999;
+	z-index: 100;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -701,6 +700,14 @@ input:checked + .slider:before {
 	overflow: auto;
 	/*pointer-events: none;*/
 	background: rgba(0, 0, 0, 0.7);
+	&#loader {
+		opacity: 1;
+		transition: 0s;
+		&.hide {
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+	}
 	&#easteregg {
 		backdrop-filter: blur(3px);
 		opacity: 0;
@@ -938,93 +945,6 @@ input:checked + .slider:before {
 			/*   transform: scale(0.8); */
 		}
 	}
-}
-
-
-
-
-
-#loader-bg {
-	z-index: 99999;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	transition: 0.3s ease forwards;
-	transition-property: opacity;
-	
-	p3 {
-		color: white;
-		position: absolute;
-		opacity: 0;
-		bottom: 1em;
-		/*play a fade in animation once after a delay*/
-		animation: 0.5s 1 fadein;
-		animation-fill-mode: forwards; // stops animation at the end
-		animation-delay: 3s;
-	}
-}
-@-webkit-keyframes fadein {
-	from { opacity: 0; }
-	to { opacity: 1; }
-}
-@-moz-keyframes fadein {
-	from { opacity: 0; }
-	to { opacity: 1; }
-}
-@keyframes fadein {
-	from { opacity: 0; }
-	to { opacity: 1; }
-}
-#loader {
-	z-index: 99999;
-	fill: transparent;
-	width: 30vh;
-	margin-bottom: -30vh; /* put this over the logo below it */
-	height: auto;
-	stroke: white;
-	stroke-width: 10;
-	stroke-dasharray: 1255;
-	-webkit-animation: drawlogo 1000ms linear infinite;
-	animation: drawlogo 1000ms linear infinite;
-	transition: 0.3s ease-in-out forwards;
-	transition-property: opacity;
-}
-@-webkit-keyframes drawlogo {
-	from { stroke-dashoffset: 2510 }
-	to { stroke-dashoffset: 0 }
-}
-@-moz-keyframes drawlogo {
-	from { stroke-dashoffset: 2510 }
-	to { stroke-dashoffset: 0 }
-}
-@keyframes drawlogo {
-	from { stroke-dashoffset: 2510 }
-	to { stroke-dashoffset: 0 }
-}
-
-#loader-line {
-	z-index: 9999;
-	stroke: url(#xilog);
-	stroke-dasharray: 2000;
-	width: 100%;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	animation: 0.5s drawline linear infinite;
-}
-@-webkit-keyframes drawline {
-	from { stroke-dashoffset: 4000 }
-	to { stroke-dashoffset: 0 }
-}
-@-moz-keyframes drawline {
-	from { stroke-dashoffset: 4000 }
-	to { stroke-dashoffset: 0 }
-}
-@keyframes drawline {
-	from { stroke-dashoffset: 4000 }
-	to { stroke-dashoffset: 0 }
 }
 
 

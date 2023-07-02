@@ -16,11 +16,11 @@ window.setInterval(function(){
             delay = element.getAttribute("aos-delay");
             if(delay) {
                 element.style.transitionDelay = `0.${delay}s`
-                element.classList.add("aos-animate")
+                element.classList.remove("aos-deanimate")
             }
-            else element.classList.add("aos-animate");
+            else element.classList.remove("aos-deanimate");
         } else {
-            element.classList.remove("aos-animate");
+            element.classList.add("aos-deanimate");
         }
     })
 }, 250)
