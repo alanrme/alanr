@@ -1,7 +1,9 @@
 function showEgg(egg) {
     //audio.play()
     egg.style.display = "block"
-    egg.classList.add("show")
+    setTimeout(function(){
+        egg.classList.add("show")
+    }, 10);
 }
 
 function hideEgg(egg) {
