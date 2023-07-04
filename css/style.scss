@@ -128,7 +128,7 @@ a {
 		}
 		#alan {
 			transform: translate(0,0);
-			transition: 0.8s $bezier;
+			&.animated { transition: 0.8s $bezier; }
 		}
 	}
 	&.loader {
@@ -148,7 +148,6 @@ a {
 			}
 			#alan {
 				color: white;
-				transition: 0s;
 			}
 		}
 	}
