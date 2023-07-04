@@ -111,7 +111,6 @@ a {
 	min-height: 100vh; /* fallback for browsers that don't support custom properties */
 	min-height: calc(var(--vh, 1vh) * 100);
 	position: relative;
-	transition: 0.5s;
 	.section {
 		display: flex;
 		//position: absolute;
@@ -133,7 +132,6 @@ a {
 	}
 	&.loader {
 		z-index: 999;
-		transition: 0s;
 		#alan2 {
 			position: fixed;
 			left: 50vw;
