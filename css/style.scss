@@ -122,8 +122,11 @@ a {
 		flex-grow: 1;
 		h1 { display: inline-block }
 		p, h1:not(#alan) {
-			transition: 0.5s;
-			transition-delay: 0.4s;
+			opacity: 1;
+			&.animated {
+				transition: 0.8s $bezier;
+				transition-delay: 0.4s;
+			}
 		}
 		#alan {
 			transform: translate(0,0);
@@ -132,11 +135,20 @@ a {
 	}
 	&.loader {
 		z-index: 999;
-		#alan2 {
+		#line, #alan2 {
 			position: fixed;
 			left: 50vw;
-			top: 50vh;
 			transform: translate(-50%, -50%);
+		}
+		#line {
+			top: 60vh;
+			stroke: white;
+			stroke-width: 2px;
+			animation: 0.8s ease-out line infinite;
+			transition: 0.4s opacity;
+		}
+		#alan2 {
+			top: 50vh;
 			color: white;
 		}
 		.section {
@@ -148,6 +160,16 @@ a {
 				color: white;
 			}
 		}
+	}
+}
+@keyframes line {
+	0% {
+		stroke-dasharray: 250px 150px;
+		stroke-dashoffset: 0px;
+	}
+	100% {
+		stroke-dasharray: 250px 0px;
+		stroke-dashoffset: -250px;
 	}
 }
 /*

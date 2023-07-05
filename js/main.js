@@ -8,18 +8,22 @@ ready(() => {
     setTimeout(() => {
         text = _("#alan")
         textclone = _("#alan2")
+        line = _("#line")
         const rect = text.getBoundingClientRect();
         const rectclone = textclone.getBoundingClientRect();
         text.style.opacity = 1
+        line.style.opacity = 0
         _("#loader").style.display = "block"
         text.style.transform = `translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`
     }, 20)
     setTimeout(() => {
         loadBg = _("#loader")
         text.classList.add("animated")
+        _(".hero .section p, h1:not(#alan)", true).forEach(e => e.classList.add("animated"))
         hero.classList.remove("loader")
         loadBg.classList.add("hide")
         textclone.remove()
+        line.remove()
         text.style.transform = `translate(0,0)`
         loadBg.addEventListener("transitionend", () => {
             loadBg.style.display = 'none'
