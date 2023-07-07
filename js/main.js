@@ -42,6 +42,18 @@ ready(() => {
     for (var i = 0; i < noRightClick.length; i++) {
         noRightClick[i].addEventListener('contextmenu', event => event.preventDefault());
     }
+
+    // check browser theme preference on site load and listen to changes
+    // set website to dark if browser prefers dark mode
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add("dark")
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches)
+            document.body.classList.add("dark")
+        else
+            document.body.classList.remove("dark")
+    });
     
     
     

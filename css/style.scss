@@ -10,6 +10,9 @@ $bezier: cubic-bezier(0.15, 0.8, 0.4, 1);
 
 html {
 	font-size: 13px;
+	&:has(> body.dark) {
+		color-scheme: dark;
+	}
 }
 @media screen and (min-width: 800px) { html { font-size: 15px; } }
 @media screen and (min-width: 1200px) { html { font-size: 18px; } }
@@ -36,6 +39,30 @@ body {
 	&.dark {
 		background-color: black;
 		color: white;
+
+		nav {
+			&.scrolled {
+				background: rgba(255,255,255,0.3);
+			}
+		}
+
+		.progress {
+			border: 2px solid white;
+			background: black;
+			.progress-bar {
+				background: white;
+			}
+		}
+
+		.card {
+			background: black;
+		}
+
+		.slides-container {
+			a {
+				color: white;
+			}
+		}
 	}
 }
 
