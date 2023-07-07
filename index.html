@@ -11,7 +11,6 @@ hero: |
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script defer src="{{ site.baseurl }}/js/github.js" async></script>
 
-
 <div class="section" id="intro">
 	<div class="container" style="text-align: left; margin-bottom: 30px;">
 		<h2 class="aos" data-aos="fadein-expand-up">EXPERIENCE</h2>
@@ -29,7 +28,7 @@ hero: |
 			<div data-aos="fadein" class="aos col-md-3">
 				<p>PYTHON</p>
 				<div class="progress">
-					<div aria-label="Python" class="progress-bar" role="progressbar" style="width:45%;"></div>
+					<div aria-label="Python" class="progress-bar" role="progressbar" style="width:60%;"></div>
 				</div> 
 			</div>
 			
@@ -50,7 +49,7 @@ hero: |
 			<div data-aos="fadein" class="aos col-md-3">
 				<p>TENSORFLOW</p>
 				<div class="progress">
-					<div aria-label="Web design" class="progress-bar" role="progressbar" style="width:30%;"></div>
+					<div aria-label="Web design" class="progress-bar" role="progressbar" style="width:50%;"></div>
 				</div> 
 			</div>
 		</div>
@@ -62,8 +61,15 @@ hero: |
 	<div class="container" style="text-align: left; margin-bottom: 30px;">
 		<h2 class="aos" data-aos="fadein-expand-up">PROJECTS</h2>
 		
-		<p class="aos" data-aos="fadein-up" style="margin-top: 20px"> Check out a few of my creations. Pulled from <a href="https://github.com/XilogOfficial">GitHub</a>.</p>
-		<div class="row card-columns gh-projects"></div>
+		<p class="aos" data-aos="fadein-up" style="margin-top: 20px"> Check out a few of my creations. Pulled from <a href="https://github.com/{{ site.github_username }}">my GitHub</a>.</p>
+		<div class="row card-columns gh-projects">
+            <a id="nojs" class="col-sm-6" style="color: inherit;">
+                <div class="card aos" data-aos="fadein-up">
+                    <h3>Enable JavaScript!</h3>
+                    <p2>These projects are dynamically loaded in. Unfortunately you won't see them without JavaScript.</p2>
+                </div>
+            </a>
+        </div>
 	</div>
 	<template>
 		<a href="" class="col-sm-6" style="color: inherit;">

@@ -1,6 +1,10 @@
 // LOADER HIDE
 hero = _(".hero")
 hero.classList.add("loader")
+addEventListener("DOMContentLoaded", () => {
+    hero = _(".hero")
+    hero.classList.add("loader")
+});
 
 //window.onload = () => {}
 
@@ -73,12 +77,13 @@ ready(() => {
 
 
     // Haptics when link/button is pressed or released
-    // define a function to add a listener so other scripts
-    // can call it when they dynamically add elements
+    // I define a function to add a listener so that my other
+    // scripts can call it when they dynamically add elements
     addHaptics = (element) => {
-        // for each element in the array, add an event listener of the same name
+        // array contains all types of event listeners I want to attach haptics to
         ["touchstart", "touchend"].forEach(event => {
-            // stuff at the end is to specify the listener is passive for browsers that support it
+            // stuff at the end is to specify the event
+            // listener is passive for browsers that support it
             element.addEventListener(event, () => navigator.vibrate(5), supportsPassive ? { passive: true } : false);
         });
     }

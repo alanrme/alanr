@@ -21,6 +21,8 @@ function createCard(title, text, href, stars=-1) {
     return clone
 }
 
+projects.querySelector("#nojs").remove()
+
 fetch("https://api.github.com/search/repositories?q=user:XilogOfficial&sort=stars&order=desc")
 .then((resp) => resp.json())
 .then(function(data) {
@@ -37,8 +39,8 @@ fetch("https://api.github.com/search/repositories?q=user:XilogOfficial&sort=star
     Array.from(projects.children).forEach(e => addHaptics(e))
 })
 .catch(function(error) {
-    console.log(error);
+    console.error(error);
 
-    card = createCard("Hmm...", "I can't seem to be able to access GitHub. Something in your network may be blocking it.")
+    card = createCard("Ouch!", "I can't seem to be able to access GitHub to load these projects. Something in your network may be blocking it.")
     projects.appendChild(card)
 });
