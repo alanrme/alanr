@@ -1,3 +1,2 @@
-# Xilog
-
-# [Cool](https://xilog.xyz)
+# [alanr.me](https://alanr.me)
+My personal website and portfolio.
