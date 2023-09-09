@@ -24,6 +24,40 @@ html {
 	}
 }
 
+/* targets devices that support hover aka NOT mobile/touch devices */
+@media (hover: hover) {
+	nav {
+		a.tab {
+			&:hover {
+				background: rgba(255,255,255,0.2);
+				color: white;
+				-webkit-transition: 0.5s;
+				transition: 0.5s;
+			}
+			&#donate:hover {
+				i {
+					opacity: 1;
+					transition: 0.5s opacity;
+				}
+				.text {
+					width: 3.5em;
+					transform: scaleX(1);
+					transition: 0.5s;
+					transition-property: transform, width;
+				}
+			}
+		}
+		.checkpoint-container a .circle:hover {
+			transform: scale(1.15);
+		}
+	}
+
+	.scrollup:hover {
+		text-shadow: 0 0 15px gray;
+		transition: 0.3s;
+	}
+}
+
 body {
 	font-family: $font-stack;
 	margin: 0;
@@ -40,6 +74,10 @@ body {
 		background-color: black;
 		color: white;
 
+		span.hu {
+			box-shadow: inset 0 -2px 0 0 white;
+		}
+
 		nav {
 			&.scrolled {
 				background: rgba(255,255,255,0.3);
@@ -47,7 +85,7 @@ body {
 		}
 
 		.progress {
-			border: 2px solid white;
+			border-color: white;
 			background: black;
 			.progress-bar {
 				background: white;
@@ -56,6 +94,7 @@ body {
 
 		.card {
 			background: black;
+			border-color: white;
 		}
 
 		.slides-container {
@@ -126,6 +165,11 @@ p3 {
 
 a {
 	text-decoration: none !important;
+}
+
+span.hu {
+	box-shadow: inset 0 -2px 0 0 black;
+	transition: 0.3s;
 }
 
 
@@ -420,12 +464,6 @@ nav {
 		padding: 5px 15px;
 		-webkit-transition: 0.5s;
 		transition: 0.5s;
-		&:hover {
-			background: rgba(255,255,255,0.2);
-			color: white;
-			-webkit-transition: 0.5s;
-			transition: 0.5s;
-		}
 		
 		&#donate { /*donate button*/
 			float: right;
@@ -440,18 +478,6 @@ nav {
 				transform: scaleX(0);
 				transition: 0.5s;
 				transition-property: transform, width;
-			}
-			&:hover {
-				i {
-					opacity: 1;
-					transition: 0.5s opacity;
-				}
-				.text {
-					width: 3.5em;
-					transform: scaleX(1);
-					transition: 0.5s;
-					transition-property: transform, width;
-				}
 			}
 		}
 	}
@@ -529,9 +555,6 @@ nav {
 					border: solid 0.15em white;
 					color: white;
 				}
-				&:hover {
-					transform: scale(1.2);
-				}
 			}
 		}
 	}
@@ -605,10 +628,6 @@ nav.scrolled {
 	backdrop-filter: blur(3px);
 	transition: 0.5s $bezier;
 	&.show { right: 3em; }
-	&:hover {
-		text-shadow: 0 0 15px gray;
-		transition: 0.3s;
-	}
 }
 
 
@@ -666,8 +685,8 @@ nav.scrolled {
 .card {
 	padding: 1rem 1.5rem;
 	border-radius: 1em;
-	border: 1.5px solid #ccc;
-	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+	border: 2px solid black;
+	box-shadow: 0px 0.25em 0.5em rgba(0,0,0,0.15);
 	margin-bottom: 1.25em !important;
 }
 
@@ -942,7 +961,7 @@ input:checked + .slider:before {
 		margin: 0 0 0.5rem 0;
 		position: relative;
 		border-radius: 1em;
-		border: 1.5px solid #ccc;
+		border: 2px solid #ccc;
 		box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
 		&:active {
 			top: 1px;
@@ -984,9 +1003,23 @@ input:checked + .slider:before {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		i {
+			&.socialicon {
+				font-size: 5rem;
+			}
+			&.arrowicon {
+				font-size: 1.5rem;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+			}
+		}
 		a {
 			color: black;
-			text-decoration: underline !important;
+			p {
+				text-decoration: underline !important;
+			}
 		}
 		&:target {
 			/*   transform: scale(0.8); */

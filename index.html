@@ -2,9 +2,15 @@
 layout: default
 title: AlanR.me
 hero: |
-    I'm a full stack developer with an interest in networking and system administration.
-    <br>
-    Find my portfolio and contacts below.
+    <p>
+        I'm a full stack developer studying with an interest in networking and system administration.
+    </p>
+    <p>
+        I'm in <span class="hu"><i class="bi bi-geo-alt-fill"></i> Dubai</span> studying <span class="hu"><i class="bi bi-mortarboard-fill"></i> Computer Engineering</span>.
+    </p>
+    <p>
+        Find my portfolio and contacts below.
+    </p>
 ---
 
 <!-- Page-specific dependencies -->
@@ -68,7 +74,7 @@ hero: |
         </a>
     </div>
     <template>
-        <a href="" class="col-sm-6" style="color: inherit;">
+        <a href="" class="col-sm-6 gx-3" style="color: inherit;">
             <div class="card aos arrow" data-aos="fadein-up">
                 <h3></h3>
                 <p2></p2>
@@ -88,22 +94,32 @@ hero: |
         <div class="slides-container">
             <div class="slides">
                 <div id="slide-1">
-                    <i class="bi-envelope-fill" style="font-size: 5rem"></i>
-                    <p><a href="mailto:alan@alanr.me">alan@alanr.me</a></p>
+                    <a href="mailto:alan@alanr.me">
+                        <i class="bi bi-box-arrow-up-right arrowicon"></i>
+                        <i class="bi-envelope-fill socialicon"></i>
+                        <p>alan@alanr.me</p>
+                    </a>
                 </div>
                 <div id="slide-2">
-                    <i class="bi-github" style="font-size: 5rem"></i>
-                    <p>{{ site.github_username }}</p>
+                    <a href="https://github.com/{{ site.github_username }}">
+                        <i class="bi bi-box-arrow-up-right arrowicon"></i>
+                        <i class="bi-github socialicon"></i>
+                        <p>{{ site.github_username }}</p>
+                    </a>
+                </div>
+                <div id="slide-3">
+                    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+                        <i class="bi bi-box-arrow-up-right arrowicon"></i>
+                        <i class="bi-linkedin socialicon"></i>
+                        <p>{{ site.linkedin_username }}</p>
+                    </a>
                 </div>
             </div>
             
             <a href="#slide-1" aria-label="Email"><i class="bi-envelope-fill"></i></a>
             <a href="#slide-2" aria-label="GitHub"><i class="bi-github"></i></a>
+            <a href="#slide-3" aria-label="LinkedIn"><i class="bi-linkedin"></i></a>
         </div>
-    </div>
-    
-    <div class="card aos" data-aos="fadein-up">
-        <p3>I'm in <i class="bi bi-geo-alt-fill"></i> Dubai</p3>
     </div>
 </div>
 

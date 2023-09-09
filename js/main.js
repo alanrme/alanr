@@ -218,19 +218,25 @@ ready(() => {
 
     function updateCheckpoints(container) {
         const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+        // width to set the scroll progress bar to
         let newWidth = 0;
+        // how much to increment the progress bar to get to the next circle
+        // i.e. if there are three circles, this is 50% as the bar's width
+        // must increase by 50% to get from the first to second circle, etc
         const increment = 100/(circles.length-1)
         sections.forEach((section, i) => {
             const rect = section.getBoundingClientRect()
             if (rect.top < vh) {
-                // rect.bottom-rect.top used instead of rect.height as
-                // rect.height is not supported in older browsers
-                // Math.min used to cap newWidth at 100%
+                /*
+                rect.bottom-rect.top used instead of rect.height as rect.height
+                is not supported in older browsers
+                Math.min used to cap newWidth at 100%
+                */
                 newWidth = Math.min(increment*(i + (vh-rect.top)/(rect.bottom-rect.top)), 100)
             }
         })
         container.querySelector("#checkpoint-fill").style.width = `${newWidth}%`
-        const circlesToFill = Math.floor((newWidth+1)/(100/(circles.length-1)))
+        const circlesToFill = Math.floor((newWidth+1)/increment)
         circles.forEach((circle, i) => {
             if (i<=circlesToFill) circle.classList.add("active")
             else circle.classList.remove("active")
