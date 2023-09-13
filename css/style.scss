@@ -73,6 +73,9 @@ body {
 	&.dark {
 		background-color: black;
 		color: white;
+		a {
+			color: turquoise;
+		}
 
 		span.hu {
 			box-shadow: inset 0 -2px 0 0 white;
@@ -101,6 +104,16 @@ body {
 			a {
 				color: white;
 			}
+		}
+
+		.scrollup {
+			background: rgba(127, 127, 127, 0.3);
+		}
+
+		.footer {
+			border-top: 2px solid white;
+			background-color: transparent;
+			color: inherit;
 		}
 	}
 }
@@ -316,7 +329,8 @@ span.hu {
 	padding-bottom: 40px;
 	text-align: left;
 	/* gradient top border */
-	border-top: 0.2em solid black;
+	background-color: black;
+	color: white;
 	border-image-slice: 1;
 }
 
@@ -624,7 +638,7 @@ nav.scrolled {
 	border-radius: 1em;
 	border: 1.5px solid #ccc;
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
-	background: rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.5);
 	backdrop-filter: blur(3px);
 	transition: 0.5s $bezier;
 	&.show { right: 3em; }
@@ -967,7 +981,7 @@ input:checked + .slider:before {
 			top: 1px;
 		}
 		&:focus {
-			background: #333;
+			background: #888;
 		}
 	}
 }
