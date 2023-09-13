@@ -94,7 +94,7 @@ body {
 
 		.card {
 			background: black;
-			border-color: white;
+			//border-color: white;
 		}
 
 		.slides-container {
@@ -280,8 +280,8 @@ span.hu {
 	margin: auto;
 	margin: 2em 1em;
 	border-radius: 1em;
-	border: 1.5px solid #ccc;
-	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+	border: 2px solid #ccc;
+	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
 	h2 {
 		/* L shaped border
 		border-image: linear-gradient(to right, #1ec1c7, #4e44b0) 1 100%;
@@ -542,7 +542,7 @@ nav {
 			.circle {
 				background-color: #fff;
 				border-radius: 999px;
-				box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+				box-shadow: 0px 0.15em 0.3em rgba(0,0,0,0.3);
 				height: 2.6rem;
 				width: 2.6rem;
 				font-size: 1.6em;
@@ -623,7 +623,7 @@ nav.scrolled {
 	cursor: pointer;
 	border-radius: 1em;
 	border: 1.5px solid #ccc;
-	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
 	background: rgba(255, 255, 255, 0.3);
 	backdrop-filter: blur(3px);
 	transition: 0.5s $bezier;
@@ -685,8 +685,8 @@ nav.scrolled {
 .card {
 	padding: 1rem 1.5rem;
 	border-radius: 1em;
-	border: 2px solid black;
-	box-shadow: 0px 0.25em 0.5em rgba(0,0,0,0.15);
+	border: 2px solid #ccc;
+	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.15);
 	margin-bottom: 1.25em !important;
 }
 
@@ -958,11 +958,11 @@ input:checked + .slider:before {
 		text-decoration: none;
 		align-items: center;
 		justify-content: center;
-		margin: 0 0 0.5rem 0;
+		margin: 1rem 0 0.5rem 0;
 		position: relative;
 		border-radius: 1em;
 		border: 2px solid #ccc;
-		box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+		box-shadow: 0px 0.15em 0.3em rgba(0,0,0,0.2);
 		&:active {
 			top: 1px;
 		}
@@ -989,6 +989,11 @@ input:checked + .slider:before {
 	scroll-snap-points-x: repeat(300px);
 	scroll-snap-type: mandatory;
 	*/
+
+	border-radius: 1em;
+	border: 2px solid #ccc;
+	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.15);
+
 	> div {
 		scroll-snap-align: start;
 		flex-shrink: 0;
@@ -998,6 +1003,7 @@ input:checked + .slider:before {
 		transform: scale(1);
 		transition: transform 0.5s;
 		position: relative;
+		padding: 0.5rem 1.5rem;
 		
 		display: flex;
 		flex-direction: column;
@@ -1011,8 +1017,8 @@ input:checked + .slider:before {
 			&.arrowicon {
 				font-size: 1.5rem;
 				position: absolute;
-				top: 0px;
-				right: 0px;
+				top: 1em;
+				right: 1.5em;
 			}
 		}
 		a {
