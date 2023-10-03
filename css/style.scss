@@ -195,6 +195,12 @@ span.hu {
 	min-height: 100vh; /* fallback for browsers that don't support custom properties */
 	min-height: calc(var(--vh, 1vh) * 100);
 	position: relative;
+	&.unscrolled .section {
+		border-radius: 0;
+		border-width: 0px 0px 2px 0px;
+		margin: 0px;
+		transition: 0.5s $bezier;
+	}
 	.section {
 		display: flex;
 		//position: absolute;
@@ -204,11 +210,12 @@ span.hu {
 		justify-content: flex-end;
     	align-items: flex-start;
 		flex-grow: 1;
+		transition: 0.5s $bezier;
 		h1 { display: inline-block }
 		p, h1:not(#alan) {
 			opacity: 1;
 			&.animated {
-				transition: 0.8s $bezier;
+				transition: opacity 0.8s $bezier;
 				transition-delay: 0.4s;
 			}
 		}
@@ -256,28 +263,6 @@ span.hu {
 		stroke-dashoffset: -250px;
 	}
 }
-/*
-.logo {
-	display: block;
-	width: auto;
-	max-width: 30vh;
-	height: auto;
-	-webkit-transition: 0.5s;
-	transition: 0.5s;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	&:hover {
-		-webkit-box-shadow: 0 6px 18px 0 rgba(0,0,0,0.4);
-		box-shadow: 0 6px 18px 0 rgba(0,0,0,0.4);
-		-webkit-transform: scale(1.02, 1.02);
-		transform: scale(1.02, 1.02);
-		-webkit-transition: 0.5s;
-		transition: 0.5s;
-		border-radius: 30%;
-		-webkit-border-radius: 30%;
-	}
-}
-*/
 
 
 .chevron-down {
@@ -293,7 +278,7 @@ span.hu {
 	margin: auto;
 	margin: 2em 1em;
 	border-radius: 1em;
-	border: 2px solid #ccc;
+	border: 2px solid #aaa;
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
 	h2 {
 		/* L shaped border
@@ -314,11 +299,6 @@ span.hu {
 .content {
 	width: 100%;
 	text-align: left;
-	/* XILOG LINE (don't forget to uncomment in media rules too)
-	background: url("../img/line.png") no-repeat, #fff;
-	background-size: 70%;
-	background-position: left bottom;
-	*/
 }
 
 .footer {
@@ -636,7 +616,7 @@ nav.scrolled {
 	z-index: 999;
 	cursor: pointer;
 	border-radius: 1em;
-	border: 1.5px solid #ccc;
+	border: 1.5px solid #aaa;
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
 	background: rgba(255, 255, 255, 0.5);
 	backdrop-filter: blur(3px);
@@ -699,7 +679,7 @@ nav.scrolled {
 .card {
 	padding: 1rem 1.5rem;
 	border-radius: 1em;
-	border: 2px solid #ccc;
+	border: 2px solid #aaa;
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.15);
 	margin-bottom: 1.25em !important;
 }
@@ -975,7 +955,7 @@ input:checked + .slider:before {
 		margin: 1rem 0 0.5rem 0;
 		position: relative;
 		border-radius: 1em;
-		border: 2px solid #ccc;
+		border: 2px solid #aaa;
 		box-shadow: 0px 0.15em 0.3em rgba(0,0,0,0.2);
 		&:active {
 			top: 1px;
@@ -1005,7 +985,7 @@ input:checked + .slider:before {
 	*/
 
 	border-radius: 1em;
-	border: 2px solid #ccc;
+	border: 2px solid #aaa;
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.15);
 
 	> div {

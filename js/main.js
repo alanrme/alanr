@@ -203,13 +203,17 @@ ready(() => {
             scrollup.classList.remove("show")
         }
         
-        
+        if (scrollpos > 20) {
+            hero.classList.remove("unscrolled")
+        } else {
+            hero.classList.add("unscrolled")
+        }
+
         // FIXED NAV
         // handles attaching nav to screen when scrolled far enough
         if (scrollpos > 200) { // after the nav is no longer visible
             if (!nav.classList.contains('scrolled')) nav.classList.add('scrolled');
-        } 
-        if (scrollpos < 200) {
+        } else {
             if (nav.classList.contains('scrolled')) nav.classList.remove("scrolled");
         }
 
