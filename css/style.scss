@@ -195,6 +195,9 @@ span.hu {
 	min-height: 100vh; /* fallback for browsers that don't support custom properties */
 	min-height: calc(var(--vh, 1vh) * 100);
 	position: relative;
+	#line, #alan2 {
+		display: none;
+	}
 	&.unscrolled .section {
 		border-radius: 0;
 		border-width: 0px 0px 2px 0px;
@@ -232,6 +235,7 @@ span.hu {
 			transform: translate(-50%, -50%);
 		}
 		#line {
+			display: block;
 			top: 60vh;
 			stroke: white;
 			stroke-width: 2px;
@@ -239,6 +243,7 @@ span.hu {
 			transition: 0.4s opacity;
 		}
 		#alan2 {
+			display: block;
 			top: 50vh;
 			color: white;
 		}
@@ -312,6 +317,9 @@ span.hu {
 	background-color: black;
 	color: white;
 	border-image-slice: 1;
+	p {
+		margin-bottom: 0px;
+	}
 }
 
 .centered {
@@ -537,9 +545,9 @@ nav {
 				background-color: #fff;
 				border-radius: 999px;
 				box-shadow: 0px 0.15em 0.3em rgba(0,0,0,0.3);
-				height: 2.6rem;
-				width: 2.6rem;
-				font-size: 1.6em;
+				height: 1.7em;
+				width: 1.7em;
+				font-size: 1.65em;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -947,12 +955,12 @@ input:checked + .slider:before {
 		display: inline-flex;
 		width: 2em;
 		height: 2em;
-		font-size: 1.5rem;
+		font-size: 1.8em;
 		color: black;
 		text-decoration: none;
 		align-items: center;
 		justify-content: center;
-		margin: 1rem 0 0.5rem 0;
+		margin: 0.5em 0px;
 		position: relative;
 		border-radius: 1em;
 		border: 2px solid #aaa;

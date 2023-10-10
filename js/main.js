@@ -204,9 +204,15 @@ ready(() => {
         }
         
         if (scrollpos > 20) {
-            hero.classList.remove("unscrolled")
+            if (hero.classList.contains("unscrolled")) {
+                hero.classList.remove("unscrolled")
+                navigator.vibrate(2)
+            }
         } else {
-            hero.classList.add("unscrolled")
+            if (!hero.classList.contains("unscrolled")) {
+                hero.classList.add("unscrolled")
+                navigator.vibrate(2)
+            }
         }
 
         // FIXED NAV
