@@ -191,7 +191,7 @@ span.hu {
 
 .hero {
 	display: flex;
-	z-index: -1;
+	z-index: 0;
 	min-height: 100vh; /* fallback for browsers that don't support custom properties */
 	min-height: calc(var(--vh, 1vh) * 100);
 	position: relative;
@@ -215,7 +215,7 @@ span.hu {
 		flex-grow: 1;
 		transition: 0.5s $bezier;
 		h1 { display: inline-block }
-		p, h1:not(#alan) {
+		p, h1:not(#alan), a, input {
 			opacity: 1;
 			&.animated {
 				transition: opacity 0.8s $bezier;
@@ -248,7 +248,7 @@ span.hu {
 			color: white;
 		}
 		.section {
-			p, h1:not(#alan) {
+			p, h1:not(#alan), a, input {
 				opacity: 0;
 				transition: 0s;
 			}
