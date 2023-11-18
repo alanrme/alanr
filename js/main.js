@@ -137,18 +137,6 @@ ready(() => {
     })
     
     
-    // SCROLL UP BUTTON
-    // scrollup looks like it's defined to only be used once but it is
-    // used more in the scroll-position loop further down
-    scrollup = _('.scrollup');
-    scrollup.addEventListener("click", () => {
-        window.scroll({
-            top: 0, 
-            left: 0, 
-            behavior: 'smooth' // smooth scroll
-        });
-    })
-    
     
     // Checking if element is in viewport (used for parallax scroll)
     function isInViewport(node) {
@@ -186,9 +174,10 @@ ready(() => {
     
     let intro = _('.content').offsetTop; // top of content
     let nav = _('nav');
-    let checkpointContainer = _('.checkpoint-container')
-    let circles = checkpointContainer.querySelectorAll(".circle")
-    let sections = _(".section", true)
+    let checkpointContainer = _('.checkpoint-container');
+    let circles = checkpointContainer.querySelectorAll(".circle");
+    let sections = _(".section", true);
+    let scrollup = _('.scrollup');
     // run every 150ms, put most scroll events here
     // more efficient than the scroll event
     window.setInterval(function(){
@@ -198,20 +187,20 @@ ready(() => {
         
         // if user scrolls below intro, show button
         if (scrollpos > intro) {
-            scrollup.classList.add("show")
+            scrollup.classList.add("show");
         } else {
-            scrollup.classList.remove("show")
+            scrollup.classList.remove("show");
         }
         
         if (scrollpos > 20) {
             if (hero.classList.contains("unscrolled")) {
-                hero.classList.remove("unscrolled")
-                navigator.vibrate(2)
+                hero.classList.remove("unscrolled");
+                navigator.vibrate(2);
             }
         } else {
             if (!hero.classList.contains("unscrolled")) {
-                hero.classList.add("unscrolled")
-                navigator.vibrate(2)
+                hero.classList.add("unscrolled");
+                navigator.vibrate(2);
             }
         }
 
@@ -223,7 +212,7 @@ ready(() => {
             if (nav.classList.contains('scrolled')) nav.classList.remove("scrolled");
         }
 
-        updateCheckpoints(checkpointContainer)
+        updateCheckpoints(checkpointContainer);
     }, 150);
 
     function updateCheckpoints(container) {
