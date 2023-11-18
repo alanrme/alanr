@@ -137,7 +137,6 @@ ready(() => {
     })
     
     
-    
     // Checking if element is in viewport (used for parallax scroll)
     function isInViewport(node) {
         var rect = node.getBoundingClientRect()
@@ -152,55 +151,42 @@ ready(() => {
     
     
     // SCROLL POSITION
-    let scrollpos = 0;
+    let scrollpos = 0
     document.addEventListener('scroll', () => {
-        scrollpos = window.scrollY;
-        
-        // parallax scroll
-        /*
-        $('.parallax').each(function(index, element) {
-            // Check if the element is in the viewport.
-            if (isInViewport(this)) {
-                var diff = scrollpos - this.offsetTop
-                var ratio = Math.round((diff / this.offsetHeight) * 350)
-                $(this).css('background-position','center ' + parseInt(-ratio) + 'px')
-                $(".hero").css('transform', `translateY(${parseInt(ratio*0.5)}px)`)
-            }
-        })
-        */
+        scrollpos = window.scrollY
     });
     
     
     
-    let intro = _('.content').offsetTop; // top of content
-    let nav = _('nav');
-    let checkpointContainer = _('.checkpoint-container');
-    let circles = checkpointContainer.querySelectorAll(".circle");
-    let sections = _(".section", true);
-    let scrollup = _('.scrollup');
-    // run every 150ms, put most scroll events here
-    // more efficient than the scroll event
+    let intro = _('.content').offsetTop // top of content
+    let nav = _('nav')
+    let checkpointContainer = _('.checkpoint-container')
+    let circles = checkpointContainer.querySelectorAll(".circle")
+    let sections = _(".section", true)
+    let scrollup = _('.scrollup')
+    // run every 150ms, put most things-that-change-with-scrolling here.
+    // more efficient than putting them in the scroll event
     window.setInterval(function(){
         intro = _('.content').offsetTop; // set top of content
-        // ^ this is in a loop so that when the screen is turned it
+        // ^ this is in a loop so that if the screen is turned it
         // will update with new values
         
         // if user scrolls below intro, show button
         if (scrollpos > intro) {
-            scrollup.classList.add("show");
+            scrollup.classList.add("show")
         } else {
-            scrollup.classList.remove("show");
+            scrollup.classList.remove("show")
         }
         
         if (scrollpos > 20) {
             if (hero.classList.contains("unscrolled")) {
-                hero.classList.remove("unscrolled");
-                navigator.vibrate(2);
+                hero.classList.remove("unscrolled")
+                navigator.vibrate(2)
             }
         } else {
             if (!hero.classList.contains("unscrolled")) {
-                hero.classList.add("unscrolled");
-                navigator.vibrate(2);
+                hero.classList.add("unscrolled")
+                navigator.vibrate(2)
             }
         }
 
@@ -212,7 +198,7 @@ ready(() => {
             if (nav.classList.contains('scrolled')) nav.classList.remove("scrolled");
         }
 
-        updateCheckpoints(checkpointContainer);
+        updateCheckpoints(checkpointContainer)
     }, 150);
 
     function updateCheckpoints(container) {
