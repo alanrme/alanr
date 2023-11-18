@@ -75,6 +75,9 @@ body {
 		color: white;
 		a {
 			color: turquoise;
+			&.uncolored {
+				color: white;
+			}
 		}
 
 		span.hu {
@@ -178,6 +181,9 @@ p3 {
 
 a {
 	text-decoration: none !important;
+	&.uncolored {
+		color: black;
+	}
 }
 
 span.hu {
