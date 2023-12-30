@@ -21,7 +21,7 @@
 title: AlanR
 url: "https://alanr.me" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-github_username: XilogOfficial
+github_username: alanrme
 linkedin_username: alanrd
 host: 0.0.0.0
 sass:

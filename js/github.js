@@ -1,3 +1,6 @@
+---
+---
+
 projects = _(".gh-projects");
 var msnry = new Masonry(".gh-projects", { "percentPosition": true });
 
@@ -23,7 +26,7 @@ function createCard(title, text, href, stars=-1) {
 
 projects.querySelector("#nojs").remove()
 
-fetch("https://api.github.com/search/repositories?q=user:XilogOfficial&sort=stars&order=desc")
+fetch("https://api.github.com/search/repositories?q=user:{{ site.github_username }}&sort=stars&order=desc")
 .then((resp) => resp.json())
 .then(function(data) {
     for (var i = 0; i < 6; i++) {
