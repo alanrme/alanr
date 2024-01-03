@@ -703,6 +703,9 @@ nav.scrolled {
 	.card {
 		text-align: center;
 		padding: 1.5em inherit;
+		h2, h3, h4 {
+			margin-bottom: 0px;
+		}
 		i {
 			font-size: 5rem;
 			margin-top: 0.2em;
