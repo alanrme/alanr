@@ -667,23 +667,8 @@ nav.scrolled {
 .gh-projects.card-columns {
 	.card {
 		font-size: 0.8rem;
-		.icons {
-			display: flex;
-			float: right;
-			font-size: 1.5em;
-			font-weight: 500;
-			.skills {
-				vertical-align: middle;
-				margin-right: 0.25em;
-				i { margin-right: 0.1em; }
-			}
-			.stars {
-				margin-left: 0.25em;
-			}
-		}
 		// turning h3 into h4 to please Lighthouse
 		h3 {
-			display: inline-block;
 			font-size: 2em;
 		}
 		&.arrow h3:after {
@@ -724,6 +709,27 @@ nav.scrolled {
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.15);
 	margin-bottom: 1.25em !important;
 	font-size: 0.8rem;
+
+	.heading h3 {
+		display: inline-block;
+	}
+	.icons {
+		display: flex;
+		float: right;
+		font-size: 1.5em;
+		font-weight: 500;
+		&.large {
+			font-size: 2em;
+		}
+		.skills {
+			vertical-align: middle;
+			margin-right: 0.25em;
+			i { margin-right: 0.1em; }
+		}
+		.stars {
+			margin-left: 0.25em;
+		}
+	}
 }
 
 
@@ -871,105 +877,41 @@ input:checked + .slider:before {
 
 
 
-#port-items {
-	text-align: center;
-	margin: 0 auto;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-}
-#port-items .p-item {
-	width: auto;
-	height: 10em;
-	margin: 1em;
-	text-align: center;
-	overflow: hidden;
-	vertical-align: middle;
+.timeline {
 	position: relative;
-	cursor: pointer;
-	-webkit-border-radius: 2em;
-	border-radius: 2em;
-	-webkit-transition: 0.5s;
-	transition: 0.5s;
-	.img-container {
-		img, picture {
-			max-height: 10em;
-			position: relative;
-		}
-		.middle { display: none }
-	}
-	&:hover {
-		-webkit-box-shadow: 0 6px 18px 0 rgba(0,0,0,0.4);
-		box-shadow: 0 6px 18px 0 rgba(0,0,0,0.4);
-		-webkit-border-radius: 1em;
-		border-radius: 1em;
-		-webkit-transition: 0.5s;
-		transition: 0.5s;
-	}
-}
-#port-items .p-item .p-name, #port-items .p-item .p-desc {
-	display: none;
-}
-#p-over {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	pointer-events: auto;
-	height: 100%;
-	width: 100%;
-}
-#p-view .p-item {
-	display: flex;
-	height: 100%;
-	padding: 1em;
-	z-index: 10000;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	.img-container {
-		// for some reason this makes .middle fill container up properly
-		display: inline-flex;
-		position: relative;
-		img, picture img {
-			max-height: 80vh;
-			max-width: 100%;
-			width: auto;
-		}
-		.middle { // the thingy that appears when hovering on image
-			background-color: rgba(0,0,0,0.5);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 100%;
-			width: 100%;
-			opacity: 0;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			-ms-transform: translate(-50%, -50%);
-			text-align: center;
-			transition: .3s ease;
-		}
-		.middle:hover {
-			opacity: 1;
-		}
-	}
-	.p-name {
-		position: relative;
-		color: white;
-		font-size: 1.5rem;
-	} .p-desc {
-		position: relative;
-		color: white;
-		font-size: 1.2rem;
-	}
-}
+	/* counteract the timeline circles spilling over by 1em */
+	margin-left: 1em;
 
+	&::after {
+		content: '';
+		position: absolute;
+		width: 0.6em;
+		background-color: black;
+		border-radius: 1em;
+		top: 0;
+		bottom: 0;
+		margin-left: -3px;
+	}
+
+	.timeline-item {
+		position: relative;
+		padding-left: 2em;
+
+		/* The timeline circles/points */
+		&::after {
+			content: '';
+			position: absolute;
+			width: 2em;
+			height: 2em;
+			left: -1em;
+			top: 1em;
+			background-color: white;
+			border: 0.2475em solid black;
+			border-radius: 50%;
+			z-index: 1;
+		}
+	}
+}
 
 
 
