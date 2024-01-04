@@ -1,13 +1,15 @@
-<nav>
-    {% unless page.title == 404 %}
-    <div class="checkpoint-container">
-        <div class="checkpoint-fill" id="checkpoint-fill"></div>
-        <a href="#top" aria-label="About me/hero"><div class="circle active"><i class="bi bi-person-fill"></i></div></a>
-        <a href="#intro" aria-label="Experience and skills"><div class="circle"><i class="bi bi-mortarboard-fill"></i></div></a>
-        <a href="#portfolio" aria-label="Portfolio of software I've developed"><div class="circle"><i class="bi bi-code"></i></div></a>
-        <a href="#contact" aria-label="Contact me"><div class="circle"><i class="bi bi-envelope-open-fill" style="font-size: 90%;"></i></div></a>
-     </div>
-     {% endunless %}
+<div id="nav-container">
+    <nav>
+        {% unless page.title == 404 %}
+        <div class="checkpoint-container">
+            <div class="checkpoint-fill" id="checkpoint-fill"></div>
+            <a href="#top" aria-label="About me/hero"><div class="circle active"><i class="bi bi-person-fill"></i></div></a>
+            <a href="#intro" aria-label="Experience and skills"><div class="circle"><i class="bi bi-mortarboard-fill"></i></div></a>
+            <a href="#portfolio" aria-label="Portfolio of software I've developed"><div class="circle"><i class="bi bi-code"></i></div></a>
+            <a href="#contact" aria-label="Contact me"><div class="circle"><i class="bi bi-envelope-open-fill" style="font-size: 90%;"></i></div></a>
+            </div>
+            {% endunless %}
 
-    <div class="menu" style="display: none; color: white"><i class="bi-list"></i></div>
-</nav>
+        <div class="menu" style="display: none; color: white"><i class="bi-list"></i></div>
+    </nav>
+</div>

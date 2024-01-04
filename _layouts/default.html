@@ -44,11 +44,14 @@ https://github.com/{{ site.github_username }}
 
     <!-- if JS off -->
     <noscript>
-        <div style="background-color: #fff; color: #000; z-index: 99999999999999999999999999999999999999999; position: fixed; left:0;top:0; opacity: 0.5;">
-            <p>
-                You should probably enable JavaScript! My website relies on it.
-            </p>
-        </div>
+        <style>
+            #noscript-disclaimer {
+                display: block !important;
+            }
+            .hero .section #alan {
+                opacity: 1 !important;
+            }
+        </style>
     </noscript>
 </body>
 
