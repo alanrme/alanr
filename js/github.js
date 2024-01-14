@@ -37,7 +37,6 @@ function createCard(title, text, href, stars=-1) {
 
     // keep this up here, otherwise you'll be using "title" the HTML text node
     skills = repoSkills[title]
-    console.log(title)
 
     title = document.createTextNode(title)
     clone.querySelector("h3").appendChild(title)
@@ -67,7 +66,7 @@ projects.querySelector("#nojs").remove()
 
 fetch("https://api.github.com/search/repositories?q=user:{{ site.github_username }}&sort=stars&order=desc")
 .then((resp) => resp.json())
-.then(function(data) {
+.then((data) => {
     for (var i = 0; i < 6; i++) {
         item = data.items[i]
         if (item.private) return
@@ -77,12 +76,14 @@ fetch("https://api.github.com/search/repositories?q=user:{{ site.github_username
     
     msnry.reloadItems()
     msnry.layout()
-    // Array.from() converts the HTMLCollection to an array
-    Array.from(projects.children).forEach(e => addHaptics(e))
 })
 .catch(function(error) {
     console.error(error);
 
     card = createCard("Ouch!", "I can't seem to be able to access GitHub to load these projects. Something in your network may be blocking it.")
     projects.appendChild(card)
-});
+})
+.then(() => {
+    // Array.from() converts the HTMLCollection to an array
+    Array.from(projects.children).forEach(e => addHaptics(e))
+})

@@ -23,6 +23,7 @@ url: "https://alanr.me" # the base hostname & protocol for your site, e.g. http:
 baseurl: "" # the subpath of your site, e.g. /blog
 github_username: alanrme
 linkedin_username: alanrd
+github_repo: alanr
 host: 0.0.0.0
 sass:
     sass_dir: css

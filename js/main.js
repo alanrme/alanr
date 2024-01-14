@@ -217,7 +217,7 @@ ready(() => {
                 is not supported in older browsers
                 Math.min used to cap newWidth at 100%
                 */
-                newWidth = Math.min(increment*(i + (vh-rect.top)/(rect.bottom-rect.top)), 100)
+                newWidth = Math.min(increment*(i + (vh - rect.top) / (rect.bottom - rect.top)), 100)
             }
         })
         container.querySelector("#checkpoint-fill").style.width = `${newWidth}%`
