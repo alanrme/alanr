@@ -721,24 +721,57 @@ div.shake {
 	margin-bottom: 1.25em !important;
 	font-size: 0.8rem;
 
-	.heading h3 {
-		display: inline-block;
+	.heading {
+		h3 {
+			display: inline-block;
+		}
+		.arrowicon {
+			float: right;
+			font-size: 1.5em;
+		}
 	}
-	.icons {
+	.actions {
 		display: flex;
-		float: right;
-		font-size: 1.5em;
-		font-weight: 500;
-		&.large {
-			font-size: 2em;
+		flex-direction: row;
+		margin-top: 0.5em;
+
+		button {
+			&:after {
+				content: ">";
+				opacity: 0.3;
+				margin-left: 0.1em;
+				transition: 0.3s;
+			}
+			&:hover:after {
+				opacity: 0.6;
+				margin-left: 0.4em;
+			}
 		}
-		.skills {
-			vertical-align: middle;
-			margin-right: 0.25em;
-			i { margin-right: 0.1em; }
-		}
-		.stars {
-			margin-left: 0.25em;
+
+		.icons {
+			display: flex;
+
+			/* align to bottom of container -> icons bottom is in line with button bottom */
+			align-self: flex-end;
+			/* grow 1 -> take up remaining horizontal space */
+			flex-grow: 1;
+			/* place children on the far left horizontally */
+			justify-content: end;
+			/* now these icons are on the bottom left of the card */
+
+			font-size: 1.8em;
+			font-weight: 500;
+			&.large {
+				font-size: 2em;
+			}
+			.skills {
+				vertical-align: middle;
+				margin-right: 0.25em;
+				i { margin-right: 0.1em; }
+			}
+			.stars {
+				margin-left: 0.25em;
+			}
 		}
 	}
 }
@@ -1028,13 +1061,13 @@ input:checked + .slider:before {
 
 button, a.button, input[type="button"] {
 	background: #eee;
-	-webkit-border-radius: 0px;
-	border-radius: 0px;
+	-webkit-border-radius: 999px;
+	border-radius: 999px;
 	display: inline-block;
 	cursor: pointer;
 	color: black;
-	font-size: 1.5rem;
-	padding: 4px 14px;
+	font-size: 1.75em;
+	padding: 0.2em 0.75em;
 	text-decoration: none;
 	border: 0;
 	outline: 1px solid transparent;
