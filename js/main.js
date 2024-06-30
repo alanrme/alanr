@@ -198,10 +198,10 @@ ready(() => {
             if (nav.classList.contains('scrolled')) nav.classList.remove("scrolled");
         }
 
-        updateCheckpoints(checkpointContainer)
+        sectionActions(checkpointContainer)
     }, 150);
 
-    function updateCheckpoints(container) {
+    function sectionActions(container) {
         const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
         // width to set the scroll progress bar to
         let newWidth = 0;
@@ -218,6 +218,18 @@ ready(() => {
                 Math.min used to cap newWidth at 100%
                 */
                 newWidth = Math.min(increment*(i + (vh - rect.top) / (rect.bottom - rect.top)), 100)
+            }
+            
+            header = section.querySelector("h2.stickyheader")
+            if (header) {
+                // if the element is at the top of the screen
+                if (rect.top < 0) {
+                    header.classList.add("sticky")
+                    header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top - vh)*30}%)`
+                } else {
+                    header.classList.remove("sticky")
+                    header.style.transform = null
+                }
             }
         })
         container.querySelector("#checkpoint-fill").style.width = `${newWidth}%`

@@ -73,7 +73,7 @@ body {
 		}
 
 		.card {
-			background: black;
+			background: rgba(0,0,0,0.5);
 			//border-color: white;
 		}
 
@@ -275,6 +275,7 @@ span.hu {
 	border-radius: 1em;
 	border: 2px solid #aaa;
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
+	overflow: clip;
 	h2 {
 		/* L shaped border
 		border-image: linear-gradient(to right, #1ec1c7, #4e44b0) 1 100%;
@@ -287,8 +288,24 @@ span.hu {
 		//border-width: 0 0 0 5px;
 		text-align: left;
 		//padding: 5px 15px;
+		top: 0px;
+		margin-left: 0px;
 		font-weight: 900;
 		margin-bottom: 0.3em;
+		transform-origin: top left;
+
+		&.stickyheader {
+			display: inline-block;
+			transition: 0.5s $bezier;
+		}
+
+		&.sticky {
+			z-index: -1;
+			position: sticky;
+			top: 2rem;
+			transform: scale(10);
+			opacity: 0.2;
+		}
 	}
 }
 
@@ -693,14 +710,20 @@ div.shake {
 		h3 {
 			font-size: 2em;
 		}
-		&.arrow h3:after {
-			content: ">";
-			opacity: 0.3;
-			margin-left: 0.1em;
-			transition: 0.3s;
-		}
-		@include hover {	
-			&.arrow:hover h3:after {
+		&.arrow {
+			h3:after {
+				content: ">";
+				opacity: 0.3;
+				margin-left: 0.1em;
+				transition: 0.3s;
+			}
+			@include hover {
+				&:hover h3:after {
+					opacity: 0.6;
+					margin-left: 0.4em;
+				}
+			}
+			&:active h3:after {
 				opacity: 0.6;
 				margin-left: 0.4em;
 			}
@@ -733,6 +756,7 @@ div.shake {
 	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.15);
 	margin-bottom: 1.25em !important;
 	font-size: 0.8rem;
+	background: rgba(255,255,255,0.5);
 
 	.heading {
 		h3 {
