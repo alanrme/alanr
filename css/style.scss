@@ -25,38 +25,12 @@ html {
 }
 
 /* targets devices that support hover aka NOT mobile/touch devices */
-@media (hover: hover) {
-	nav {
-		a.tab {
-			&:hover {
-				background: rgba(255,255,255,0.2);
-				color: white;
-				-webkit-transition: 0.5s;
-				transition: 0.5s;
-			}
-			&#donate:hover {
-				i {
-					opacity: 1;
-					transition: 0.5s opacity;
-				}
-				.text {
-					width: 3.5em;
-					transform: scaleX(1);
-					transition: 0.5s;
-					transition-property: transform, width;
-				}
-			}
-		}
-		.checkpoint-container a .circle:hover {
-			transform: scale(1.15);
-		}
-	}
-
-	.scrollup:hover {
-		text-shadow: 0 0 15px gray;
-		transition: 0.3s;
+@mixin hover {
+	@media (hover: hover) and (pointer: fine) {
+	  	@content;
 	}
 }
+
 
 body {
 	font-family: $font-stack;
@@ -111,6 +85,12 @@ body {
 
 		.scrollup {
 			background: rgba(127, 127, 127, 0.3);
+			@include hover {
+				&:hover {
+					text-shadow: 0 0 15px gray;
+					transition: 0.3s;
+				}
+			}
 		}
 
 		.footer {
@@ -493,6 +473,31 @@ div.shake {
 					transition: 0.5s;
 					transition-property: transform, width;
 				}
+
+				
+				@include hover {
+					&:hover {
+						i {
+							opacity: 1;
+							transition: 0.5s opacity;
+						}
+						.text {
+							width: 3.5em;
+							transform: scaleX(1);
+							transition: 0.5s;
+							transition-property: transform, width;
+						}
+					}
+				}
+			}
+
+			@include hover {
+				&:hover {
+					background: rgba(255,255,255,0.2);
+					color: white;
+					-webkit-transition: 0.5s;
+					transition: 0.5s;
+				}
 			}
 		}
 		
@@ -564,6 +569,12 @@ div.shake {
 					align-items: center;
 					justify-content: center;
 					transition: 0.4s $bezier;
+
+					@include hover {
+						&:hover {
+							transform: scale(1.15);
+						}
+					}
 					&.active {
 						background-color: black;
 						border: solid 0.15em white;
@@ -688,9 +699,11 @@ div.shake {
 			margin-left: 0.1em;
 			transition: 0.3s;
 		}
-		&.arrow:hover h3:after {
-			opacity: 0.6;
-			margin-left: 0.4em;
+		@include hover {	
+			&.arrow:hover h3:after {
+				opacity: 0.6;
+				margin-left: 0.4em;
+			}
 		}
 	}
 }
@@ -1074,9 +1087,11 @@ button, a.button, input[type="button"] {
 	outline-offset: 2px;
 	transition: 0.3s;
 	
-	&:hover {
-		outline: 1px solid white;
-		transition: 0.3s;
+	@include hover {
+		&:hover {
+			outline: 1px solid rgb(242, 190, 190);
+			transition: 0.3s;
+		}
 	}
 	&:active {
 		position: relative;
