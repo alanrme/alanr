@@ -225,7 +225,7 @@ ready(() => {
                 // if the element is at the top of the screen
                 if (rect.top < 0) {
                     header.classList.add("sticky")
-                    header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top - vh)*30}%)`
+                    header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top)*70}%)`
                 } else {
                     header.classList.remove("sticky")
                     header.style.transform = null
