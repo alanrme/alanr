@@ -224,10 +224,14 @@ ready(() => {
             if (header) {
                 // if the element is at the top of the screen
                 if (rect.top < 0) {
-                    header.classList.add("sticky")
+                    if (!header.classList.contains("sticky")) {
+                        header.classList.add("sticky")
+                    }
                     header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top)*70}%)`
                 } else {
-                    header.classList.remove("sticky")
+                    if (header.classList.contains("sticky")) {
+                        header.classList.remove("sticky")
+                    }
                     header.style.transform = null
                 }
             }
@@ -235,8 +239,14 @@ ready(() => {
         container.querySelector("#checkpoint-fill").style.width = `${newWidth}%`
         const circlesToFill = Math.floor((newWidth+1)/increment)
         circles.forEach((circle, i) => {
-            if (i<=circlesToFill) circle.classList.add("active")
-            else circle.classList.remove("active")
+            if (i<=circlesToFill) {
+                if (!circle.classList.contains("active"))
+                    circle.classList.add("active")
+            }
+            else {
+                if (circle.classList.contains("active"))
+                    circle.classList.remove("active")
+            }
         })
     }
 });
