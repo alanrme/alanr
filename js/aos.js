@@ -16,7 +16,7 @@ window.setInterval(function(){
             delay = element.getAttribute("aos-delay");
             if(delay) element.style.transitionDelay = `0.${delay}s`
             element.classList.remove("aos-deanimate")
-        } else if (!element.classList.contains("aos-deanimate")) {
+        } else {
             element.classList.add("aos-deanimate");
         }
     })
