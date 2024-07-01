@@ -224,10 +224,20 @@ ready(() => {
             if (header) {
                 // if the element is at the top of the screen
                 if (rect.top < 0) {
-                    header.classList.add("sticky")
+                    header.classList.add("sticky")  
                     header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top)*70}%)`
+                    listenerF = (event) => {
+                        if (event.elapsedTime == 0.5) {
+                            event.target.classList.add("active")
+                            console.log("hi")
+                        } else {
+                            event.target.removeEventListener("transitionend", listenerF)
+                        }
+                    }
+                    header.addEventListener("transitionend", listenerF)
                 } else {
                     header.classList.remove("sticky")
+                    header.classList.remove("active")
                     header.style.transform = null
                 }
             }
