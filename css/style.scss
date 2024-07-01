@@ -73,7 +73,7 @@ body {
 		}
 
 		.card {
-			background: rgba(0,0,0,0.7);
+			background: rgba(0,0,0,0.6);
 			//border-color: white;
 		}
 
@@ -97,6 +97,17 @@ body {
 			border-top: 2px solid white;
 			background-color: transparent;
 			color: inherit;
+		}
+
+		button, a.button, input[type="button"] {
+			background: #eee;
+			color: black;
+
+			@include hover {
+				&:hover {
+					outline: 0.1em solid #eee;
+				}
+			}
 		}
 	}
 }
@@ -1101,23 +1112,23 @@ input:checked + .slider:before {
 
 
 button, a.button, input[type="button"] {
-	background: #eee;
+	background: black;
 	-webkit-border-radius: 999px;
 	border-radius: 999px;
 	display: inline-block;
 	cursor: pointer;
-	color: black;
+	color: white;
 	font-size: 1.75em;
 	padding: 0.2em 0.75em;
 	text-decoration: none;
 	border: 0;
 	outline: 1px solid transparent;
-	outline-offset: 2px;
 	transition: 0.3s;
 	
 	@include hover {
 		&:hover {
-			outline: 1px solid rgb(242, 190, 190);
+			outline: 0.1em solid black;
+			outline-offset: 0.1em;
 			transition: 0.3s;
 		}
 	}
