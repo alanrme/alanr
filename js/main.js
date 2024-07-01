@@ -193,9 +193,9 @@ ready(() => {
         // FIXED NAV
         // handles attaching nav to screen when scrolled far enough
         if (scrollpos > 200) { // after the nav is no longer visible
-            if (!nav.classList.contains('scrolled')) nav.classList.add('scrolled');
+            nav.classList.add('scrolled');
         } else {
-            if (nav.classList.contains('scrolled')) nav.classList.remove("scrolled");
+            nav.classList.remove("scrolled");
         }
 
         sectionActions(checkpointContainer)
