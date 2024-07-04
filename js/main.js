@@ -103,6 +103,7 @@ ready(() => {
     // i.e. if there are three circles, this is 50% as the bar's width
     // must increase by 50% to get from the first to second circle, etc
     const increment = 100/(circles.length-1)
+    const headerYTrans = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
 
     // Current scroll position
     let scrollPos = 0
@@ -118,7 +119,7 @@ ready(() => {
             // look for header that has already been activated with class sticky
             header = section.querySelector("h2.stickyheader.sticky")
             if (header) {
-                header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top)*70}%)`
+                header.style.transform = `scale(10) translate(${(rect.top) / (rect.bottom - rect.top)*70}%, ${headerYTrans}px)`
             }
         })
     })
