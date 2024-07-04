@@ -8,4 +8,4 @@ window.setInterval(function(){
             element.classList.add("aos-deanimate");
         }
     })
-}, 250)
+}, 150)

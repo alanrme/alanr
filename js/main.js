@@ -92,14 +92,6 @@ ready(() => {
     
     
     
-    // SCROLL POSITION
-    let scrollPos = 0
-    document.addEventListener('scroll', () => {
-        scrollPos = window.scrollY
-    });
-    
-    
-    
     let intro = _('.content').offsetTop // top of content
     let nav = _('nav')
     let scrollup = _('.scrollup')
@@ -111,6 +103,25 @@ ready(() => {
     // i.e. if there are three circles, this is 50% as the bar's width
     // must increase by 50% to get from the first to second circle, etc
     const increment = 100/(circles.length-1)
+
+    // Current scroll position
+    let scrollPos = 0
+
+    document.addEventListener('scroll', () => {
+        // Update scroll position on scroll
+        scrollPos = window.scrollY
+
+        
+        sections.forEach((section, i) => {
+            const rect = section.getBoundingClientRect()
+            
+            // look for header that has already been activated with class sticky
+            header = section.querySelector("h2.stickyheader.sticky")
+            if (header) {
+                header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top)*70}%)`
+            }
+        })
+    })
     
     // run every 150ms, put most things-that-change-with-scrolling here.
     // more efficient than putting them in the scroll event
@@ -119,7 +130,7 @@ ready(() => {
         // ^ this is in a loop so that if the screen is turned it
         // will update with new values
         
-        // if user scrolls below intro, show button
+        // if user scrolls below hero, show scroll up button
         if (scrollPos > intro) {
             scrollup.classList.add("show")
         } else {
@@ -171,13 +182,9 @@ ready(() => {
                 // if the element is at the top of the screen
                 if (rect.top < 0) {
                     header.classList.add("sticky")  
-                    header.style.transform = `scale(10) translateX(${(rect.top) / (rect.bottom - rect.top)*70}%)`
                     listenerF = (event) => {
-                        if (event.elapsedTime == 0.5) {
-                            event.target.classList.add("active")
-                        } else {
-                            event.target.removeEventListener("transitionend", listenerF)
-                        }
+                        event.target.classList.add("active")
+                        event.target.removeEventListener("transitionend", listenerF)
                     }
                     header.addEventListener("transitionend", listenerF)
                 } else {
