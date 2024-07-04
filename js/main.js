@@ -183,7 +183,9 @@ ready(() => {
                 if (rect.top < 0) {
                     header.classList.add("sticky")  
                     listenerF = (event) => {
-                        event.target.classList.add("active")
+                        if (event.target.classList.contains("sticky")) {
+                            event.target.classList.add("active")
+                        }
                         event.target.removeEventListener("transitionend", listenerF)
                     }
                     header.addEventListener("transitionend", listenerF)
