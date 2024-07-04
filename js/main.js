@@ -1,4 +1,4 @@
-// LOADER HIDE
+// Enable loader
 hero = _(".hero")
 hero.classList.add("loader")
 addEventListener("DOMContentLoaded", () => {
@@ -9,6 +9,8 @@ addEventListener("DOMContentLoaded", () => {
 //window.onload = () => {}
 
 ready(() => {
+    // Loader fading out animation
+    // Small delay so it works on Firefox
     setTimeout(() => {
         text = _("#alan")
         textclone = _("#alan2")
@@ -40,12 +42,13 @@ ready(() => {
     // set vh property to the true viewport height to fix it on mobile browsers
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
     
-    
     // DISABLE RIGHT CLICK
+    /*
     noRightClick = _(".norightclick", true)
     for (var i = 0; i < noRightClick.length; i++) {
         noRightClick[i].addEventListener('contextmenu', event => event.preventDefault());
     }
+    */
 
     // check browser theme preference on site load and listen to changes
     // set website to dark if browser prefers dark mode
@@ -58,9 +61,7 @@ ready(() => {
         else
             document.body.classList.remove("dark")
     });
-    
-    
-    
+
     
     // see if the browser supports passive listeners for some events - improves performance
     // test via a getter in the options object to see if the passive property is accessed
@@ -77,7 +78,7 @@ ready(() => {
 
 
     // Haptics when link/button is pressed or released
-    // I define a function to add a listener so that my other
+    // define a function to add a listener so that the other
     // scripts can call it when they dynamically add elements
     addHaptics = (element) => {
         // array contains all types of event listeners I want to attach haptics to
@@ -91,79 +92,26 @@ ready(() => {
     
     
     
-    //MOBILE MENU
-    menuBg = _('#menu-bg')
-    _('.menu').addEventListener("click", () => {
-        // when clicked clone all hidden navbar items to the nav menu
-        navItems = _("nav a", true)
-        for (var i = 0; i < navItems.length; i++) {
-            if(!navItems[i].classList.contains('menu')) { // don't clone the menu button though!
-                e = navItems[i].cloneNode(true);
-                _('#menu').appendChild(e);
-            }
-        }
-        
-        // fade in menu - delay because if it wasn't there the opacity transition didn't work
-        menuBg.style.display = "flex";
-        setTimeout(() => { menuBg.style.opacity = 1; }, 2);
-        
-        // apply blur effect
-        ["blur", "blur2"].forEach(id => {
-            blurModal = _(`.modal#${id}`);
-            blurModal.classList.add("show");
-            blurModal.classList.add("animate");
-        });
-    });
-    
-    _('.m-close, #menu-bg', true).forEach(e => {
-        func = () => {
-            // hide both menuBg and blurModal
-            menuBg.style.display = "none";
-            ["blur", "blur2"].forEach(id => { _(`.modal#${id}`).classList.remove("show"); });
-            
-            // empty the menu except for close button & remove listener so it won't fire on fadein
-            _("#menu a:not(.m-close)", true).forEach(e => e.remove());
-            menuBg.removeEventListener('transitionend', func);
-        }
-        
-        e.addEventListener("click", () => { // when close button clicked
-            menuBg.style.opacity = 0;
-            menuBg.addEventListener('transitionend', func, false);
-            
-            // un-animate blur effect, finish setting display: none in
-            // menuBg's transitionend event
-            ["blur", "blur2"].forEach(id => { _(`.modal#${id}`).classList.remove("animate"); });
-        })
-    })
-    
-    
-    // Checking if element is in viewport (used for parallax scroll)
-    function isInViewport(node) {
-        var rect = node.getBoundingClientRect()
-        return (
-            (rect.height > 0 || rect.width > 0) &&
-            rect.bottom >= 0 &&
-            rect.right >= 0 &&
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.left <= (window.innerWidth || document.documentElement.clientWidth)
-            )
-    }
-    
-    
     // SCROLL POSITION
-    let scrollpos = 0
+    let scrollPos = 0
     document.addEventListener('scroll', () => {
-        scrollpos = window.scrollY
+        scrollPos = window.scrollY
     });
     
     
     
     let intro = _('.content').offsetTop // top of content
     let nav = _('nav')
-    let checkpointContainer = _('.checkpoint-container')
-    let circles = checkpointContainer.querySelectorAll(".circle")
-    let sections = _(".section", true)
     let scrollup = _('.scrollup')
+
+    let checkpointProgress = _(".checkpoint-container #checkpoint-fill")
+    let circles = _(".checkpoint-container .circle", true)
+    let sections = _(".section", true)
+    // how much to increment the progress bar to get to the next circle
+    // i.e. if there are three circles, this is 50% as the bar's width
+    // must increase by 50% to get from the first to second circle, etc
+    const increment = 100/(circles.length-1)
+    
     // run every 150ms, put most things-that-change-with-scrolling here.
     // more efficient than putting them in the scroll event
     window.setInterval(function(){
@@ -172,13 +120,13 @@ ready(() => {
         // will update with new values
         
         // if user scrolls below intro, show button
-        if (scrollpos > intro) {
+        if (scrollPos > intro) {
             scrollup.classList.add("show")
         } else {
             scrollup.classList.remove("show")
         }
         
-        if (scrollpos > 20) {
+        if (scrollPos > 20) {
             if (hero.classList.contains("unscrolled")) {
                 hero.classList.remove("unscrolled")
                 navigator.vibrate(2)
@@ -192,25 +140,23 @@ ready(() => {
 
         // FIXED NAV
         // handles attaching nav to screen when scrolled far enough
-        if (scrollpos > 200) { // after the nav is no longer visible
+        if (scrollPos > 200) { // after the nav is no longer visible
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove("scrolled");
         }
 
-        sectionActions(checkpointContainer)
+        sectionActions()
     }, 150);
 
-    function sectionActions(container) {
+    function sectionActions() {
         const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
         // width to set the scroll progress bar to
         let newWidth = 0;
-        // how much to increment the progress bar to get to the next circle
-        // i.e. if there are three circles, this is 50% as the bar's width
-        // must increase by 50% to get from the first to second circle, etc
-        const increment = 100/(circles.length-1)
+
         sections.forEach((section, i) => {
             const rect = section.getBoundingClientRect()
+            // if this section's top is above the screen bottom
             if (rect.top < vh) {
                 /*
                 rect.bottom-rect.top used instead of rect.height as rect.height
@@ -229,20 +175,19 @@ ready(() => {
                     listenerF = (event) => {
                         if (event.elapsedTime == 0.5) {
                             event.target.classList.add("active")
-                            console.log("hi")
                         } else {
                             event.target.removeEventListener("transitionend", listenerF)
                         }
                     }
                     header.addEventListener("transitionend", listenerF)
                 } else {
-                    header.classList.remove("sticky")
                     header.classList.remove("active")
+                    header.classList.remove("sticky")
                     header.style.transform = null
                 }
             }
         })
-        container.querySelector("#checkpoint-fill").style.width = `${newWidth}%`
+        checkpointProgress.style.width = `${newWidth}%`
         const circlesToFill = Math.floor((newWidth+1)/increment)
         circles.forEach((circle, i) => {
             if (i<=circlesToFill) circle.classList.add("active")

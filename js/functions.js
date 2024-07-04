@@ -16,3 +16,16 @@ function ready(callback) {
         if (document.readyState=='complete') callback();
     });
 }
+
+function isInViewport(node, excludeTop = false) {
+    var rect = node.getBoundingClientRect()
+    // excludeTop means that this function returns true even if the element is
+    // completely above the top of the screen
+    return (
+        (rect.height > 0 || rect.width > 0) &&
+        (excludeTop || rect.bottom >= 0) &&
+        rect.right >= 0 &&
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+    )
+}
