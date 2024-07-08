@@ -103,10 +103,17 @@ ready(() => {
     // i.e. if there are three circles, this is 50% as the bar's width
     // must increase by 50% to get from the first to second circle, etc
     const increment = 100/(circles.length-1)
-    const headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
+
+    let headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
 
     // Current scroll position
     let scrollPos = 0
+
+    // fire when window resized, e.g. when device is turned
+    window.addEventListener('resize', function(event) {
+        intro = _('.content').offsetTop; // set top of content
+        headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
+    }, true);
 
     document.addEventListener('scroll', () => {
         // Update scroll position on scroll
@@ -131,10 +138,6 @@ ready(() => {
     // run every 150ms, put most things-that-change-with-scrolling here.
     // more efficient than putting them in the scroll event
     window.setInterval(function(){
-        intro = _('.content').offsetTop; // set top of content
-        // ^ this is in a loop so that if the screen is turned it
-        // will update with new values
-        
         // if user scrolls below hero, show scroll up button
         if (scrollPos > intro) {
             scrollup.classList.add("show")
