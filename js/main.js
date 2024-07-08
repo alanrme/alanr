@@ -112,14 +112,19 @@ ready(() => {
     // fire when window resized, e.g. when device is turned
     window.addEventListener('resize', function(event) {
         intro = _('.content').offsetTop; // set top of content
+        
         headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
+        updateHeaders()
     }, true);
 
     document.addEventListener('scroll', () => {
         // Update scroll position on scroll
         scrollPos = window.scrollY
 
-        
+        updateHeaders()
+    })
+
+    function updateHeaders() {
         sections.forEach((section, i) => {
             const rect = section.getBoundingClientRect()
             
@@ -133,7 +138,7 @@ ready(() => {
                 }
             }
         })
-    })
+    }
     
     // run every 150ms, put most things-that-change-with-scrolling here.
     // more efficient than putting them in the scroll event
