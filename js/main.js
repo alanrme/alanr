@@ -40,7 +40,7 @@ ready(() => {
     window.scrollTo(0, 0); // scroll to top on page load
     
     // set vh property to the true viewport height to fix it on mobile browsers
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
     
     // DISABLE RIGHT CLICK
     /*
@@ -112,7 +112,9 @@ ready(() => {
     // fire when window resized, e.g. when device is turned
     window.addEventListener('resize', function(event) {
         intro = _('.content').offsetTop; // set top of content
-        
+
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+
         headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
         updateHeaders()
     }, true);
