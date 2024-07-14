@@ -41,6 +41,9 @@ ready(() => {
     
     // set vh property to the true viewport height to fix it on mobile browsers
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+
+    // is the browser based on firefox
+    const isFirefox = navigator.userAgent.indexOf("Firefox") > -1
     
     // DISABLE RIGHT CLICK
     /*

@@ -64,6 +64,12 @@ body {
 			}
 		}
 
+		.section {
+			h2.sticky {
+				opacity: 0.2;
+			}
+		}
+
 		.progress {
 			border-color: white;
 			background: black;
@@ -315,7 +321,7 @@ span.hu {
 			position: sticky;
 			top: 2rem;
 			transform: scale(10);
-			opacity: 0.2;
+			opacity: 0.15;
 
 			&.active {
 				transition: none;
