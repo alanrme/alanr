@@ -180,7 +180,7 @@ ready(() => {
     }, 150);
 
     function sectionActions() {
-        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * 0.8
         // width to set the scroll progress bar to
         let newWidth = 0;
 
@@ -202,7 +202,8 @@ ready(() => {
                 if (rect.top < 0) {
                     header.classList.add("sticky")  
                     listenerF = (event) => {
-                        if (event.target.classList.contains("sticky")) {
+                        console.log(event)
+                        if (event.propertyName == "transform" && event.target.classList.contains("sticky")) {
                             event.target.classList.add("active")
                         }
                         event.target.removeEventListener("transitionend", listenerF)
