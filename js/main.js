@@ -113,9 +113,13 @@ ready(() => {
     window.addEventListener('resize', function(event) {
         intro = _('.content').offsetTop; // set top of content
 
-        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+        // window.document.documentElement.clientHeight as opposed to window.innerHeight
+        // since using the former will prevent stuff from moving around when a mobile
+        // browser's address and navbar collapse
 
-        headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
+        document.documentElement.style.setProperty('--vh', `${window.document.documentElement.clientHeight * 0.01}px`)
+
+        headerYOffset = (window.document.documentElement.clientHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
         updateHeaders()
     }, true);
 
