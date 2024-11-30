@@ -114,7 +114,7 @@ ready(() => {
 
     // fire when window resized, e.g. when device is turned
     window.addEventListener('resize', function(event) {
-        intro = _('.content').offsetTop; // set top of content
+        intro = _('.content').offsetTop // set top of content
 
         // window.document.documentElement.clientHeight as opposed to window.innerHeight
         // since using the former will prevent stuff from moving around when a mobile
@@ -124,7 +124,7 @@ ready(() => {
 
         headerYOffset = (window.document.documentElement.clientHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
         updateHeaders()
-    }, true);
+    }, true)
 
     document.addEventListener('scroll', () => {
         // Update scroll position on scroll
@@ -134,6 +134,7 @@ ready(() => {
     })
 
     function updateHeaders() {
+        if (isFirefox) return;
         sections.forEach((section, i) => {
             const rect = section.getBoundingClientRect()
             
@@ -199,6 +200,7 @@ ready(() => {
                 newWidth = Math.min(increment*(i + (vh - rect.top) / (rect.bottom - rect.top)), 100)
             }
             
+            if (isFirefox) return
             header = section.querySelector("h2.stickyheader")
             if (header) {
                 // if the element is at the top of the screen
