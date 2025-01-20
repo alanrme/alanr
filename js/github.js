@@ -13,7 +13,9 @@ skillType = [
     "python-plain",
     "go-plain", //6
     "postgresql-plain",
-    "bash-plain" //8
+    "bash-plain", //8
+    "svelte-plain",
+    "tailwindcss-original" //10
 ]
 
 repoSkills = {
@@ -26,7 +28,8 @@ repoSkills = {
     "telegramprocessor": [3],
     "discordprocessor": [3],
     "ds4led": [5,8],
-    "go-clock": [6]
+    "go-clock": [6],
+    "calcutyper": [2,9,10]
 }
 
 
