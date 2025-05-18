@@ -1,6 +1,9 @@
 {% include nav.html %}
 <div class="hero unscrolled {% if page.title == 404 %}shake{% endif %}" id="top">
-    <h1 id="alan2">Alan</h1>
+    <div id="title-container">
+        <!--<h1>Hello,&nbsp;</h1>-->
+        <h1 id="title2">I'm Alan</h1>
+    </div>
     <svg id="line" height="20" width="200">
         <line x1="0" y1="0" x2="200" y2="0"/>
     </svg>
@@ -8,7 +11,7 @@
         <div class="background">
             <p id="noscript-disclaimer">Hi! For the best experience on my website, please enable JavaScript.</p>
             
-            <h1>I'm&nbsp;</h1><h1 id="alan" style="opacity: 0;">Alan</h1>
+            <h1>Hello,&nbsp;</h1><h1 id="title" style="opacity: 0;">I'm Alan</h1>
             {{ include.content }}
         </div>
     </div>

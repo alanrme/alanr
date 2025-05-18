@@ -12,11 +12,13 @@ ready(() => {
     // Loader fading out animation
     // Small delay so it works on Firefox
     setTimeout(() => {
-        text = _("#alan")
-        textclone = _("#alan2")
+        text = _("#title")
+        textclone = _("#title2")
         line = _("#line")
         const rect = text.getBoundingClientRect();
         const rectclone = textclone.getBoundingClientRect();
+        console.log(rect)
+        console.log(rectclone)
         text.style.opacity = 1
         line.style.opacity = 0
         _("#loader").style.display = "block"
@@ -37,13 +39,13 @@ ready(() => {
     }, 400)
 
 
-    window.scrollTo(0, 0); // scroll to top on page load
+    //window.scrollTo(0, 0); // scroll to top on page load
     
     // set vh property to the true viewport height to fix it on mobile browsers
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
 
     // is the browser based on firefox
-    const isFirefox = navigator.userAgent.indexOf("Firefox") > -1
+    //const isFirefox = navigator.userAgent.indexOf("Firefox") > -1
     
     // DISABLE RIGHT CLICK
     /*
@@ -107,7 +109,7 @@ ready(() => {
     // must increase by 50% to get from the first to second circle, etc
     const increment = 100/(circles.length-1)
 
-    let headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
+    let headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(this.document.documentElement).fontSize)*3 - 5
 
     // Current scroll position
     let scrollPos = 0
@@ -122,7 +124,8 @@ ready(() => {
 
         document.documentElement.style.setProperty('--vh', `${window.document.documentElement.clientHeight * 0.01}px`)
 
-        headerYOffset = (window.document.documentElement.clientHeight)/10 - parseFloat(getComputedStyle(_("h2")).fontSize) - 5
+        headerYOffset = (window.document.documentElement.clientHeight)/10 - parseFloat(getComputedStyle(this.document.documentElement).fontSize)*3 - 5
+        
         updateHeaders()
     }, true)
 
@@ -134,7 +137,7 @@ ready(() => {
     })
 
     function updateHeaders() {
-        if (isFirefox) return;
+        //if (isFirefox) return;
         sections.forEach((section, i) => {
             const rect = section.getBoundingClientRect()
             
@@ -144,7 +147,7 @@ ready(() => {
                 // look for header that has already been activated with class sticky
                 header = section.querySelector("h2.stickyheader.sticky")
                 if (header) {
-                    header.style.transform = `scale(10) translate(${(rect.top) / (rect.bottom - rect.top)*70}%, ${headerYOffset}px)`
+                    header.style.transform = `translate(${(rect.top) / (rect.bottom - rect.top)*70}%, ${headerYOffset}px)`
                 }
             }
         })
@@ -200,14 +203,13 @@ ready(() => {
                 newWidth = Math.min(increment*(i + (vh - rect.top) / (rect.bottom - rect.top)), 100)
             }
             
-            if (isFirefox) return
+            //if (isFirefox) return
             header = section.querySelector("h2.stickyheader")
             if (header) {
                 // if the element is at the top of the screen
                 if (rect.top < 0) {
                     header.classList.add("sticky")  
                     listenerF = (event) => {
-                        console.log(event)
                         if (event.propertyName == "transform" && event.target.classList.contains("sticky")) {
                             event.target.classList.add("active")
                         }
