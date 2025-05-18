@@ -109,7 +109,7 @@ ready(() => {
     // must increase by 50% to get from the first to second circle, etc
     const increment = 100/(circles.length-1)
 
-    let headerYOffset = (window.innerHeight)/10 - parseFloat(getComputedStyle(this.document.documentElement).fontSize)*3 - 5
+    let headerYOffset = (window.innerHeight)*0.9 - parseFloat(getComputedStyle(this.document.documentElement).fontSize)*40
 
     // Current scroll position
     let scrollPos = 0
@@ -124,7 +124,7 @@ ready(() => {
 
         document.documentElement.style.setProperty('--vh', `${window.document.documentElement.clientHeight * 0.01}px`)
 
-        headerYOffset = (window.document.documentElement.clientHeight)/10 - parseFloat(getComputedStyle(this.document.documentElement).fontSize)*3 - 5
+        headerYOffset = (window.innerHeight)*0.9 - parseFloat(getComputedStyle(this.document.documentElement).fontSize)*40
         
         updateHeaders()
     }, true)
