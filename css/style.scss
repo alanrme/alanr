@@ -343,7 +343,7 @@ span.hu {
 			//backface-visibility: hidden;
 
 			&.active {
-				transition: none;
+				transition: 0.05s linear;
 			}
 		}
 	}
