@@ -12,27 +12,28 @@ ready(() => {
     // Loader fading out animation
     // Small delay so it works on Firefox
     setTimeout(() => {
-        text = _("#title")
-        textclone = _("#title2")
         line = _("#line")
-        const rect = text.getBoundingClientRect();
-        const rectclone = textclone.getBoundingClientRect();
-        console.log(rect)
-        console.log(rectclone)
-        text.style.opacity = 1
         line.style.opacity = 0
         _("#loader").style.display = "block"
-        text.style.transform = `translate(${rectclone.left-rect.left}px,${rectclone.top-rect.top}px)`
     }, 20)
     setTimeout(() => {
+        text = _("#title")
+        textclone = _("#title2")
+        const rect = text.getBoundingClientRect();
+        const rectclone = textclone.getBoundingClientRect();
+        textclone.style.transform = `translate(${rect.left-rectclone.left}px,${rect.top-rectclone.top}px)`
+        
         loadBg = _("#loader")
-        text.classList.add("animated")
-        _(".hero .section p, h1:not(#alan)", true).forEach(e => e.classList.add("animated"))
-        hero.classList.remove("loader")
+        _(".hero .section p, h1:not(#title)", true).forEach(e => e.classList.add("animated"))
         loadBg.classList.add("hide")
-        textclone.remove()
         line.remove()
-        text.style.transform = `translate(0,0)`
+        
+        textclone.addEventListener("transitionend", () => {
+            console.log("r")
+            text.style.opacity = 1
+            textclone.remove()
+            hero.classList.remove("loader")
+        })
         loadBg.addEventListener("transitionend", () => {
             loadBg.style.display = 'none'
         })
