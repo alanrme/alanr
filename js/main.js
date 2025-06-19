@@ -22,6 +22,8 @@ ready(() => {
         const rect = text.getBoundingClientRect();
         const rectclone = textclone.getBoundingClientRect();
         textclone.style.transform = `translate(${rect.left-rectclone.left}px,${rect.top-rectclone.top}px)`
+
+        if (!document.body.classList.contains("dark")) textclone.style.color = "#000000"
         
         loadBg = _("#loader")
         _(".hero .section p, h1:not(#title)", true).forEach(e => e.classList.add("animated"))

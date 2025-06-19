@@ -593,7 +593,7 @@ div.shake {
 			max-width: 100%;
 			width: 30em;
 			&::after {
-				content: ""; /* Mandatory with ::before */
+				content: ""; /* Mandatory with ::after */
 				background-color: white;
 				position: absolute;
 				top: 50%;
