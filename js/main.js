@@ -49,14 +49,6 @@ ready(() => {
 
     // is the browser based on firefox
     //const isFirefox = navigator.userAgent.indexOf("Firefox") > -1
-    
-    // DISABLE RIGHT CLICK
-    /*
-    noRightClick = _(".norightclick", true)
-    for (var i = 0; i < noRightClick.length; i++) {
-        noRightClick[i].addEventListener('contextmenu', event => event.preventDefault());
-    }
-    */
 
     // check browser theme preference on site load and listen to changes
     // set website to dark if browser prefers dark mode
@@ -204,26 +196,6 @@ ready(() => {
                 Math.min used to cap newWidth at 100%
                 */
                 newWidth = Math.min(increment*(i + (vh - rect.top) / (rect.bottom - rect.top)), 100)
-            }
-            
-            //if (isFirefox) return
-            header = section.querySelector("h2.stickyheader")
-            if (header) {
-                // if the element is at the top of the screen
-                if (rect.top < 0) {
-                    header.classList.add("sticky")  
-                    listenerF = (event) => {
-                        if (event.propertyName == "transform" && event.target.classList.contains("sticky")) {
-                            event.target.classList.add("active")
-                        }
-                        event.target.removeEventListener("transitionend", listenerF)
-                    }
-                    header.addEventListener("transitionend", listenerF)
-                } else {
-                    header.classList.remove("active")
-                    header.classList.remove("sticky")
-                    header.style.transform = null
-                }
             }
         })
         checkpointProgress.style.width = `${newWidth}%`
