@@ -15,7 +15,9 @@ skillType = [
     "postgresql-plain",
     "bash-plain", //8
     "svelte-plain",
-    "tailwindcss-original" //10
+    "tailwindcss-original", //10
+    "electron",
+    "flutter" //12
 ]
 
 repoSkills = {
@@ -29,7 +31,8 @@ repoSkills = {
     "discordprocessor": [3],
     "ds4led": [5,8],
     "go-clock": [6],
-    "calcutyper": [2,9,10]
+    "calcutyper": [2,9,10],
+    "library-exif-analyzer": [3,11]
 }
 
 
