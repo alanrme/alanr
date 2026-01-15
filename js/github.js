@@ -16,8 +16,8 @@ skillType = [
     "bash-plain", //8
     "svelte-plain",
     "tailwindcss-original", //10
-    "electron",
-    "flutter" //12
+    "electron-original",
+    "flutter-plain" //12
 ]
 
 repoSkills = {
