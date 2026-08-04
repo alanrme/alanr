@@ -4,7 +4,7 @@
 projects = _(".gh-projects");
 var msnry = new Masonry(".gh-projects", { "percentPosition": true });
 
-skillType = [
+const skillType = [
     "javascript-plain", //0
     "css3-plain",
     "html5-plain", //2
@@ -20,7 +20,7 @@ skillType = [
     "flutter-plain" //12
 ]
 
-repoSkills = {
+const repoSkills = {
     "alanr": [0,1,2],
     "xilog": [0,1,2],
     "toxicitybot": [3,4,7],
@@ -35,13 +35,12 @@ repoSkills = {
     "library-exif-analyzer": [3,11]
 }
 
-
 function createCard(title, text, href, stars=-1) {
     template = _("#portfolio template")
     clone = template.content.cloneNode(1).firstElementChild
     clone.href = href
 
-    // keep this up here, otherwise you'll be using "title" the HTML text node
+    // keeping this above "title" variable re-definition
     skills = repoSkills[title]
 
     title = document.createTextNode(title)
@@ -57,9 +56,11 @@ function createCard(title, text, href, stars=-1) {
         })
     } else {
         clone.querySelector("span.skills").remove()
+        clone.querySelector("div.vr").remove()
     }
     if (stars == -1) {
         clone.querySelector("span.stars").remove()
+        clone.querySelector("span.action-label").innerText = "GitHub"
     } else {
         stars = document.createTextNode(stars)
         clone.querySelector("span.stars").appendChild(stars)
@@ -79,14 +80,16 @@ fetch("https://api.github.com/search/repositories?q=user:{{ site.github_username
         card = createCard(item.name, item.description, item.html_url, item.stargazers_count)
         projects.appendChild(card)
     }
-    
+    card = createCard("More...", "Click to browse my other projects!", "https://github.com/{{ site.github_username }}?tab=repositories")
+    projects.appendChild(card)
+
     msnry.reloadItems()
     msnry.layout()
 })
 .catch(function(error) {
     console.error(error);
 
-    card = createCard("Ouch!", "I can't seem to be able to access GitHub to load these projects. Something in your network may be blocking it.")
+    card = createCard("Click to visit my GitHub!", "Sorry! I ran into an error accessing GitHub to load these projects. Your network may be blocking it.", "https://github.com/{{ site.github_username }}")
     projects.appendChild(card)
 })
 .then(() => {
