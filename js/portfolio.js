@@ -18,11 +18,10 @@ $(function(){
                 // if user clicks anywhere, fade out modal then clear it
             });
             // if the image in the modal is clicked stop the event
-            // from propagating up to p-over's click event so you
-            // can click on a button in the image
+            // from propagating up to p-over's click event so that you
+            // can click on a button inside the image
             $('#p-view .p-item img').click(function(event){
                 event.stopPropagation();
-                console.log("fuck")
             });
         });
     });

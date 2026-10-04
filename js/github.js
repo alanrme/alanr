@@ -80,7 +80,7 @@ fetch("https://api.github.com/search/repositories?q=user:{{ site.github_username
         card = createCard(item.name, item.description, item.html_url, item.stargazers_count)
         projects.appendChild(card)
     }
-    card = createCard("More...", "Click to browse my other projects!", "https://github.com/{{ site.github_username }}?tab=repositories")
+    card = createCard("More...", "These projects are pulled from my GitHub. Click to browse my other projects!", "https://github.com/{{ site.github_username }}?tab=repositories")
     projects.appendChild(card)
 
     msnry.reloadItems()

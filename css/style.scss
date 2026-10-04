@@ -22,6 +22,9 @@ html {
 	.section {
 		padding: 2.5em 2em 1em 2em !important;
 	}
+	.footer {
+		padding: 40px 2em !important;
+	}
 }
 
 /* targets devices that support hover aka NOT mobile/touch devices */
@@ -177,7 +180,9 @@ p3 {
 }
 
 a {
-	text-decoration: none !important;
+	&:not(.ul) {
+		text-decoration: none !important;
+	}
 	&.uncolored {
 		color: black;
 	}
@@ -212,6 +217,7 @@ span.hu {
 		border-radius: 0;
 		border-width: 0px 0px 2px 0px;
 		margin: 0px;
+		margin-top: 3.5em;
 		transition: 0.5s $bezier;
 	}
 	.section {
@@ -361,9 +367,7 @@ span.hu {
 .footer {
 	height: auto;
 	width: auto;
-	padding: 3vw;
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding: 40px 3em;
 	text-align: left;
 	/* gradient top border */
 	background-color: black;
