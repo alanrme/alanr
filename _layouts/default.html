@@ -24,6 +24,19 @@ https://github.com/{{ site.github_username }}
     <!-- MODALS BELOW -->
     {% include easteregg.html %}
     <div class="modal" id="loader"></div>
+    <noscript>
+        <style>
+            #title {
+                opacity: 1 !important;
+            }
+            #title2 {
+                display: none !important;
+            }
+            .modal#loader {
+                display: none !important;
+            }
+        </style>
+    </noscript>
 
     <div class="modal" id="blur"></div>
     <div class="modal" id="blur2"></div>

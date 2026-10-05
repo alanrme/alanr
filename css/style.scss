@@ -97,7 +97,6 @@ body {
 			@include hover {
 				&:hover {
 					text-shadow: 0 0 15px gray;
-					transition: 0.3s;
 				}
 			}
 		}
@@ -190,7 +189,7 @@ a {
 
 span.hu {
 	box-shadow: inset 0 -2px 0 0 black;
-	transition: 0.3s;
+	transition: box-shadow 0.3s;
 }
 #noscript-disclaimer {
 	display: none;
@@ -719,11 +718,13 @@ div.shake {
 	cursor: pointer;
 	border-radius: 1em;
 	border: 1.5px solid #aaa;
-	box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
 	background: rgba(255, 255, 255, 0.5);
 	backdrop-filter: blur(3px);
-	transition: 0.5s $bezier;
-	&.show { right: 3em; }
+	transition: right 0.5s $bezier;
+	&.show {
+		right: 3em;
+		box-shadow: 0px 0.3em 0.6em rgba(0,0,0,0.1);
+	}
 }
 
 
@@ -946,6 +947,7 @@ input:checked + .slider:before {
 	/*pointer-events: none;*/
 	background: rgba(0, 0, 0, 0.7);
 	&#loader {
+		display: block;
 		opacity: 1;
 		transition: 0s;
 		&.hide {

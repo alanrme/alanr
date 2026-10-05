@@ -6,7 +6,7 @@ addEventListener("DOMContentLoaded", () => {
     hero.classList.add("loader")
 });
 
-//window.onload = () => {}
+// window.onload = () => {}
 
 ready(() => {
     // Loader fading out animation
@@ -14,7 +14,6 @@ ready(() => {
     setTimeout(() => {
         line = _("#line")
         line.style.opacity = 0
-        _("#loader").style.display = "block"
     }, 20)
     setTimeout(() => {
         text = _("#title")
@@ -26,7 +25,7 @@ ready(() => {
         if (!document.body.classList.contains("dark")) textclone.style.color = "#000000"
         
         loadBg = _("#loader")
-        _(".hero .section p, h1:not(#title)", true).forEach(e => e.classList.add("animated"))
+        _(".hero .section p, .hero .section a, h1:not(#title)", true).forEach(e => e.classList.add("animated"))
         loadBg.classList.add("hide")
         line.remove()
         
