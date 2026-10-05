@@ -35,10 +35,11 @@ const repoSkills = {
     "library-exif-analyzer": [3,11]
 }
 
-function createCard(title, text, href, stars=-1) {
+function createCard(title, text, href, stars=-1, homepage) {
     template = _("#portfolio template")
     clone = template.content.cloneNode(1).firstElementChild
-    clone.href = href
+    clone.querySelector("a.gh-link").href = href
+    clone.querySelector("a.gh-btn").href = href
 
     // keeping this above "title" variable re-definition
     skills = repoSkills[title]
@@ -65,6 +66,11 @@ function createCard(title, text, href, stars=-1) {
         stars = document.createTextNode(stars)
         clone.querySelector("span.stars").appendChild(stars)
     }
+    if (homepage) {
+        clone.querySelector("a.homepage-btn").href = homepage
+    } else {
+        clone.querySelector("a.homepage-btn").remove()
+    }
 
     return clone
 }
@@ -77,7 +83,7 @@ fetch("https://api.github.com/search/repositories?q=user:{{ site.github_username
     for (var i = 0; i < 6; i++) {
         item = data.items[i]
         if (item.private) return
-        card = createCard(item.name, item.description, item.html_url, item.stargazers_count)
+        card = createCard(item.name, item.description, item.html_url, item.stargazers_count, item.homepage)
         projects.appendChild(card)
     }
     card = createCard("More...", "These projects are pulled from my GitHub. Click to browse my other projects!", "https://github.com/{{ site.github_username }}?tab=repositories")

@@ -30,7 +30,6 @@ ready(() => {
         line.remove()
         
         textclone.addEventListener("transitionend", () => {
-            console.log("r")
             text.style.opacity = 1
             textclone.remove()
             hero.classList.remove("loader")

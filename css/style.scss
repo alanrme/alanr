@@ -755,6 +755,16 @@ div.shake {
 .gh-projects.card-columns {
 	.card {
 		font-size: 0.8rem;
+		// make the <a> on h3 cover the whole card so the whole card is clickable
+		.gh-link:after {
+			content: "";
+			position: absolute;
+			inset: 0; /* shorthand for top:0 right:0 bottom:0 left:0 */
+			z-index: 1; /* sits over the card text */
+		}
+		.actions {
+			button, a.button { z-index: 2; }
+		}
 		// turning h3 into h4 to please Lighthouse
 		h3 {
 			font-size: 2em;
@@ -827,18 +837,21 @@ div.shake {
 	.actions {
 		display: flex;
 		flex-direction: row;
+		flex-wrap: wrap;
 		margin-top: 0.5em;
+		gap: 1em; // gap between buttons
 
-		button {
+		button, a.button {
+			text-wrap: nowrap;
 			&:after {
 				content: ">";
 				opacity: 0.3;
-				margin-left: 0.1em;
+				margin-left: 0em;
 				transition: 0.3s;
 			}
 			&:hover:after {
-				opacity: 0.6;
-				margin-left: 0.4em;
+				opacity: 1;
+				margin-left: 0.2em;
 			}
 		}
 
@@ -1162,7 +1175,7 @@ button, a.button, input[type="button"] {
 	cursor: pointer;
 	color: white;
 	font-size: 1.75em;
-	padding: 0.2em 0.75em;
+	padding: 0.2em 0.6em;
 	text-decoration: none;
 	border: 0;
 	outline: 1px solid transparent;
